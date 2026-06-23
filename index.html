@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bright Smiles - Dental Clinic</title>
+    <!-- Google Fonts: Fredoka for friendly rounded headings, Poppins for clean modern body text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Main mobile app shell container -->
+    <div class="app-container">
+        <!-- Brand Header with Premium Brushed Gold Border -->
+        <header class="app-header">
+            <div class="gold-accent-line"></div>
+            <div class="header-content">
+                <span class="logo-emoji">🦷</span>
+                <h1 class="brand-title">BRIGHT SMILES</h1>
+                <span class="sub-badge">DENTAL CLINIC</span>
+            </div>
+        </header>
+
+        <!-- Dynamic Screen Content Area -->
+        <main class="app-main">
+            
+            <!-- SCREEN 1: Star Rating / Welcome -->
+            <section id="screen-stars" class="app-screen active">
+                <div class="welcome-card">
+                    <h2 class="section-title">A Sparkling Visit?</h2>
+                    <p class="section-desc">We hope your visit was comfortable and professional today. Please rate your clinical care experience with us.</p>
+                    
+                    <div class="star-rating-container">
+                        <button class="star-btn" data-value="1">★</button>
+                        <button class="star-btn" data-value="2">★</button>
+                        <button class="star-btn" data-value="3">★</button>
+                        <button class="star-btn" data-value="4">★</button>
+                        <button class="star-btn" data-value="5">★</button>
+                    </div>
+                    <div class="rating-label">Select your rating...</div>
+                </div>
+            </section>
+
+            <!-- SCREEN 3: Keyword Selection -->
+            <section id="screen-keywords" class="app-screen">
+                <div class="card">
+                    <h2 class="section-title text-yellow">Curate Your Visit Details</h2>
+                    <p class="section-desc">Select exactly <strong>3 keywords</strong> that defined your visit. Choose <strong>2 Experience aspects</strong> and <strong>1 Dental treatment</strong>.</p>
+                    
+                    <!-- Standard Vibes Container -->
+                    <div class="category-block">
+                        <h3 class="category-title">1. Visit Experience <span class="counter" id="vibe-count">(0/2 Selected)</span></h3>
+                        <div class="chips-container" id="container-vibes">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Menu Items Container -->
+                    <div class="category-block">
+                        <h3 class="category-title">2. Dental Treatment <span class="counter" id="menu-count">(0/1 Selected)</span></h3>
+                        <div class="chips-container" id="container-menu">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+
+                    <button id="btn-confirm-keywords" class="btn btn-yellow" disabled>LOCK IN SELECTIONS</button>
+                </div>
+            </section>
+
+            <!-- SCREEN 4: Mascot Flash Challenge & Review Writer -->
+            <section id="screen-writer" class="app-screen">
+                <div class="card writer-card">
+                    <!-- Dynamic Challenge Header Card -->
+                    <div class="challenge-header-card">
+                        <h3 class="challenge-title-gold">Write Your Feedback</h3>
+                        <p class="challenge-instruction">Integrate all 3 selected keywords into your review below to unlock your reward card!</p>
+                    </div>
+
+                    <!-- Target Keyword Chips Indicator -->
+                    <div class="target-chips-container" id="target-chips-status">
+                        <!-- Loaded dynamically, shows keyword verification status (green if used) -->
+                    </div>
+
+                    <!-- Review Textarea -->
+                    <div class="input-container">
+                        <textarea id="review-text" class="input-area" placeholder="Begin writing your review... All selected keywords must be included to unlock your reward."></textarea>
+                        <div class="char-count" id="review-char-count">0 characters</div>
+                    </div>
+
+                    <div class="writer-actions-column">
+                        <button id="btn-copy-review" class="btn btn-yellow" style="width: 100%;" disabled>
+                            <span>COPY REVIEW TEXT</span>
+                            <small class="btn-subtext">Keywords missing</small>
+                        </button>
+                        
+                        <button id="btn-goto-google" class="btn btn-outline-white" style="margin-top: 12px; display: none; width: 100%;">
+                            <span>GO TO GOOGLE REVIEWS 🚀</span>
+                        </button>
+                        
+                        <button id="btn-verify-claim" class="btn btn-yellow" style="margin-top: 12px; display: none; width: 100%;">
+                            <span>VERIFY & CLAIM REWARD 🦷</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SCREEN 5: Scratch Card Gamification -->
+            <section id="screen-scratch" class="app-screen">
+                <div class="scratch-card-wrapper">
+                    <h2 class="section-title text-yellow text-center">Reveal Your Smile Card</h2>
+                    <p class="section-desc text-center">Gently swipe away the clinical seal to reveal your custom dental humor card!</p>
+                    
+                    <div class="scratch-container" id="scratch-container">
+                        <!-- Background card that is revealed -->
+                        <div class="scratch-reveal-card" id="scratch-reveal-card">
+                            <!-- Injected dynamically by JS -->
+                        </div>
+                        <!-- Canvas overlay for scratching -->
+                        <canvas id="scratch-canvas" class="scratch-canvas"></canvas>
+                    </div>
+
+                    <button id="btn-go-to-share" class="btn btn-yellow" style="display: none; margin-top: 20px;">CLAIM & SHARE</button>
+                </div>
+            </section>
+
+            <!-- SCREEN 6: Social Share Screen -->
+            <section id="screen-share" class="app-screen">
+                <div class="card share-card">
+                    <h2 class="section-title text-center text-yellow">Share Your Smile Card</h2>
+                    <p class="section-desc text-center">Showcase your customized patient smile card on Instagram or WhatsApp.</p>
+                    
+                    <!-- Share Preview Card -->
+                    <div class="social-preview-card" id="social-preview-card">
+                        <!-- Injected dynamically by JS -->
+                    </div>
+
+                    <div class="share-actions-row">
+                        <button id="btn-share-instagram" class="btn btn-share btn-instagram">📸 SHARE ON INSTAGRAM</button>
+                        <button id="btn-share-whatsapp" class="btn btn-share btn-whatsapp">💬 SHARE ON WHATSAPP</button>
+                    </div>
+
+                    <button id="btn-restart" class="btn btn-outline-white">START OVER</button>
+                </div>
+            </section>
+
+        </main>
+        
+        <!-- App Toast Notification -->
+        <div class="app-toast" id="app-toast">Copied to clipboard!</div>
+    </div>
+
+    <!-- Script Import -->
+    <script src="app.js"></script>
+</body>
+</html>
