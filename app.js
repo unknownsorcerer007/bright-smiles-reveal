@@ -411,9 +411,6 @@ reviewText.addEventListener("input", () => {
         }
     });
 
-    // Update speech bubble dynamic popups
-    updateSpeechBanter(text);
-
     if (allUsed && text.trim().length > 10) {
         btnCopyReview.disabled = false;
         btnCopyReview.querySelector("small").textContent = "Ready to Copy!";
@@ -445,8 +442,10 @@ if (btnGotoGoogle) {
 
 if (btnVerifyClaim) {
     btnVerifyClaim.addEventListener("click", () => {
-        setupScratchCard();
         navigateTo("scratch");
+        requestAnimationFrame(() => {
+            setupScratchCard();
+        });
     });
 }
 
