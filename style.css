@@ -815,7 +815,33 @@ body {
 }
 
 /* ==========================================
-   RESPONSIVE MOBILE STYLES
+   RESPONSIVE MOBILE LAYOUT (For screens <= 480px wide)
+   ========================================== */
+@media (max-width: 480px) {
+    body {
+        display: block; /* Disable desktop flex centering */
+        background-color: var(--bg-secondary); /* Seamless matching background */
+        overflow-y: auto; /* Natural page scrolling */
+    }
+    
+    .app-container {
+        max-width: 100%;
+        height: auto;
+        min-height: 100vh;
+        min-height: 100dvh;
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+        overflow: visible; /* Avoid nested scrolling conflicts */
+    }
+    
+    .app-main {
+        overflow: visible; /* Let whole page scroll */
+    }
+}
+
+/* ==========================================
+   RESPONSIVE MOBILE STYLES (Scaling & Spacing)
    ========================================== */
 @media (max-width: 480px), (max-height: 780px) {
     .app-main {
