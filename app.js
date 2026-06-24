@@ -186,7 +186,10 @@ let appState = {
     selectedVibes: [], // Max 2
     selectedMenu: [],  // Max 1
     selectedKeywords: [], 
+    selectedCardTheme: "",
     selectedCardImage: "",
+    selectedJoke: "",
+    selectedFooter: "",
     isCopied: false,
     isScratched: false
 };
@@ -345,10 +348,47 @@ function validateKeywordSelection() {
 btnConfirmKeywords.addEventListener("click", () => {
     appState.selectedKeywords = [...appState.selectedVibes, ...appState.selectedMenu];
     
+    const footers = [
+        "Your Smile Is A Lot For Us",
+        "Smile Responsibly",
+        "Compliments Ahead",
+        "Handle This Smile With Care"
+    ];
+    appState.selectedFooter = footers[Math.floor(Math.random() * footers.length)];
+
     if (appState.selectedStars <= 3) {
-        appState.selectedCardImage = "card_spa.png";
+        appState.selectedCardTheme = "spa";
+        appState.selectedCardImage = "char_spa.webp";
+        const spaJokes = [
+            "I told my dentist I wanted a crown. He gave me one and said, 'Now you rule the waiting room!' 👑",
+            "Why did the tooth go to the spa? It was feeling a bit decayed and needed to brush off some stress! 🧖‍♂️",
+            "My dentist told me to relax. I said I am relaxed, I'm just grinding my teeth in my sleep to save time! 😴",
+            "What does a dentist do at a spa? Scaling back on stress! 🧘‍♂️"
+        ];
+        appState.selectedJoke = spaJokes[Math.floor(Math.random() * spaJokes.length)];
     } else {
-        appState.selectedCardImage = Math.random() < 0.5 ? "card_vacation.png" : "card_camera.png";
+        const isVacation = Math.random() < 0.5;
+        if (isVacation) {
+            appState.selectedCardTheme = "vacation";
+            appState.selectedCardImage = "char_vacation.webp";
+            const vacationJokes = [
+                "Where do teeth go on vacation? To the beach, to get some fresh enamel and clean tide! 🏖️",
+                "Why did the tooth drive a convertible? To feel the wind in its crowns! 🏎️",
+                "Taking a vacation from plaque and tartar. Ultimate dental freedom! 🏝️",
+                "What is a tooth's favorite vacation destination? Fill-adelphia! ✈️"
+            ];
+            appState.selectedJoke = vacationJokes[Math.floor(Math.random() * vacationJokes.length)];
+        } else {
+            appState.selectedCardTheme = "camera";
+            appState.selectedCardImage = "char_camera.webp";
+            const cameraJokes = [
+                "Why did the tooth smile for the camera? Because it knew it was lookin' brilliant and bright! 📸",
+                "What did the camera say to the clean tooth? 'You make me feel so photogenic!' ✨",
+                "Keep smiling! It makes people wonder what you've been up to... or if you just got a dental cleaning! 😁",
+                "Say 'Cheese'? No, say 'Bright Smiles'! 🦷"
+            ];
+            appState.selectedJoke = cameraJokes[Math.floor(Math.random() * cameraJokes.length)];
+        }
     }
     
     initializeWriterScreen();
@@ -463,10 +503,28 @@ function setupScratchCard() {
     appState.isScratched = false;
     btnGoToShare.style.display = "none";
     
-    // Set revealed card background image
+    // Set revealed card background image and inject dynamic HTML joke content
     const revealedCard = document.getElementById("scratch-reveal-card");
     if (revealedCard) {
-        revealedCard.style.backgroundImage = `url('${appState.selectedCardImage}')`;
+        revealedCard.className = `scratch-reveal-card theme-${appState.selectedCardTheme}`;
+        revealedCard.style.backgroundImage = "none"; // Clear static bg image
+        revealedCard.innerHTML = `
+            <div class="dynamic-card-wrapper">
+                <div class="card-top-header">
+                    <span class="card-logo-emoji">🦷</span>
+                    <span class="card-logo-text">BRIGHT SMILES</span>
+                </div>
+                <div class="card-character-container">
+                    <img class="card-character-image" src="${appState.selectedCardImage}" alt="Tooth Character">
+                </div>
+                <div class="card-joke-container">
+                    <p class="card-joke-text">"${appState.selectedJoke}"</p>
+                </div>
+                <div class="card-footer-branding">
+                    <span>${appState.selectedFooter} • BRIGHT SMILES</span>
+                </div>
+            </div>
+        `;
     }
 
     const width = scratchContainer.clientWidth || 310;
@@ -586,7 +644,25 @@ const btnRestart = document.getElementById("btn-restart");
 function initializeShareScreen() {
     const previewCard = document.getElementById("social-preview-card");
     if (previewCard) {
-        previewCard.style.backgroundImage = `url('${appState.selectedCardImage}')`;
+        previewCard.className = `social-preview-card theme-${appState.selectedCardTheme}`;
+        previewCard.style.backgroundImage = "none"; // Clear static bg image
+        previewCard.innerHTML = `
+            <div class="dynamic-card-wrapper">
+                <div class="card-top-header">
+                    <span class="card-logo-emoji">🦷</span>
+                    <span class="card-logo-text">BRIGHT SMILES</span>
+                </div>
+                <div class="card-character-container">
+                    <img class="card-character-image" src="${appState.selectedCardImage}" alt="Tooth Character">
+                </div>
+                <div class="card-joke-container">
+                    <p class="card-joke-text">"${appState.selectedJoke}"</p>
+                </div>
+                <div class="card-footer-branding">
+                    <span>${appState.selectedFooter} • BRIGHT SMILES</span>
+                </div>
+            </div>
+        `;
     }
 }
 
@@ -612,7 +688,10 @@ btnRestart.addEventListener("click", () => {
         selectedVibes: [],
         selectedMenu: [],
         selectedKeywords: [],
+        selectedCardTheme: "",
         selectedCardImage: "",
+        selectedJoke: "",
+        selectedFooter: "",
         isCopied: false,
         isScratched: false
     };

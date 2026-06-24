@@ -572,9 +572,9 @@ body {
 .scratch-container {
     position: relative;
     width: 100%;
-    max-width: 310px;
+    max-width: 260px;
     height: auto;
-    aspect-ratio: 310 / 550;
+    aspect-ratio: 9 / 16;
     margin: 20px auto;
     background-color: var(--bg-card);
     border-radius: var(--border-radius-lg);
@@ -615,9 +615,9 @@ body {
 .social-preview-card {
     border-radius: var(--border-radius-lg);
     width: 100%;
-    max-width: 310px;
+    max-width: 260px;
     height: auto;
-    aspect-ratio: 310 / 550;
+    aspect-ratio: 9 / 16;
     margin: 0 auto 24px auto;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
@@ -626,6 +626,90 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
+}
+
+/* ==========================================
+   DYNAMIC CARD WRAPPER & THEMES
+   ========================================== */
+.dynamic-card-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px 14px;
+    box-sizing: border-box;
+}
+
+/* Card Themes */
+.theme-spa {
+    background: linear-gradient(135deg, #e5ece6 0%, #aabcb0 100%);
+    color: #1e2d23;
+}
+.theme-camera {
+    background: linear-gradient(135deg, #eef9ff 0%, #badaff 100%);
+    color: #15263d;
+}
+.theme-vacation {
+    background: linear-gradient(135deg, #fff4eb 0%, #ffd0a3 100%);
+    color: #3b250f;
+}
+
+/* Card Layout Elements */
+.card-top-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+.card-logo-emoji {
+    font-size: 13px;
+}
+.card-logo-text {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    opacity: 0.8;
+}
+.card-character-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 0;
+    overflow: hidden;
+}
+.card-character-image {
+    max-height: 100%;
+    max-width: 85%;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+.card-joke-container {
+    padding: 6px 4px;
+    text-align: center;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card-joke-text {
+    font-family: var(--font-heading);
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+}
+.card-footer-branding {
+    text-align: center;
+    font-size: 7.5px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    opacity: 0.5;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding-top: 8px;
 }
 
 .social-preview-card::before {
