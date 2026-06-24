@@ -591,7 +591,7 @@ function scratch(e) {
 
     ctx.globalCompositeOperation = 'destination-out';
     ctx.beginPath();
-    ctx.arc(x, y, 28, 0, Math.PI * 2);
+    ctx.arc(x, y, 42, 0, Math.PI * 2); // Increased brush size for faster scratching
     ctx.fill();
 
     checkScratchProgress();
@@ -616,10 +616,11 @@ function checkScratchProgress() {
 
     const percentage = (transparentCount / (pixels.length / 4)) * 100;
     
-    if (percentage > 35) {
+    // Lowered threshold to 22% so the full card reveals much sooner and effortlessly
+    if (percentage > 22) {
         appState.isScratched = true;
         
-        scratchCanvas.style.transition = "opacity 0.6s ease-out";
+        scratchCanvas.style.transition = "opacity 0.4s ease-out"; // Faster fade out
         scratchCanvas.style.opacity = "0";
         
         setTimeout(() => {
