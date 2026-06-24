@@ -39,32 +39,54 @@
 }
 
 body {
-    background-color: var(--bg-primary);
+    background-color: var(--bg-secondary); /* Match mobile container background directly */
     color: var(--text-primary);
     font-family: var(--font-body);
     font-size: 15px;
     line-height: 1.6;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     overflow-x: hidden;
+    overflow-y: auto; /* Natural scrolling on mobile */
 }
 
-/* App Container (Constrained for mobile app-shell layout) */
+/* App Container (Mobile-first full viewport default) */
 .app-container {
     width: 100%;
-    max-width: 480px;
-    height: 100vh;
-    height: 100dvh;
+    max-width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
     background-color: var(--bg-secondary);
     display: flex;
     flex-direction: column;
     position: relative;
-    box-shadow: var(--shadow-main);
-    border-left: 1px solid var(--border-color);
-    border-right: 1px solid var(--border-color);
-    overflow: hidden;
+    overflow: visible; /* Avoid nested scrolling conflicts on mobile */
+}
+
+/* Desktop and Tablet Shell (For screen widths > 768px) */
+@media (min-width: 769px) {
+    body {
+        background-color: var(--bg-primary); /* Obsidian deep navy-black background for outer page */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-y: hidden; /* Constrain desktop page height */
+    }
+    
+    .app-container {
+        max-width: 480px;
+        height: 100vh;
+        height: 100dvh;
+        border-left: 1px solid var(--border-color);
+        border-right: 1px solid var(--border-color);
+        box-shadow: var(--shadow-main);
+        overflow: hidden;
+        border-radius: var(--border-radius-lg);
+    }
+    
+    .app-main {
+        padding: 24px 20px; /* Desktop-only luxurious padding */
+        overflow-y: auto; /* Desktop-only inner scrolling */
+    }
 }
 
 /* ==========================================
@@ -126,8 +148,8 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 24px 20px;
-    overflow-y: auto;
+    padding: 16px 12px; /* Mobile-first default padding */
+    overflow: visible; /* Mobile-first default scroll */
 }
 
 .app-screen {
@@ -899,35 +921,9 @@ body {
 }
 
 /* ==========================================
-   RESPONSIVE MOBILE LAYOUT (For screens <= 480px wide)
-   ========================================== */
-@media (max-width: 480px) {
-    body {
-        display: block; /* Disable desktop flex centering */
-        background-color: var(--bg-secondary); /* Seamless matching background */
-        overflow-y: auto; /* Natural page scrolling */
-    }
-    
-    .app-container {
-        max-width: 100%;
-        height: auto;
-        min-height: 100vh;
-        min-height: 100dvh;
-        border: none;
-        box-shadow: none;
-        border-radius: 0;
-        overflow: visible; /* Avoid nested scrolling conflicts */
-    }
-    
-    .app-main {
-        overflow: visible; /* Let whole page scroll */
-    }
-}
-
-/* ==========================================
    RESPONSIVE MOBILE STYLES (Scaling & Spacing)
    ========================================== */
-@media (max-width: 480px), (max-height: 780px) {
+@media (max-width: 768px), (max-height: 780px) {
     .app-main {
         padding: 16px 12px;
     }
