@@ -1011,3 +1011,32 @@ body {
         padding: 4px 10px;
     }
 }
+
+/* ==========================================
+   GLOBAL FOOTER
+   ========================================== */
+.app-footer-contact {
+    text-align: center;
+    padding: 16px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    background-color: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    border-bottom-left-radius: var(--border-radius-lg);
+    border-bottom-right-radius: var(--border-radius-lg);
+}
+
+.contact-email {
+    color: var(--color-gold-light);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+}
+
+.contact-email:hover {
+    text-decoration: underline;
+    color: var(--color-gold-hover);
+}
