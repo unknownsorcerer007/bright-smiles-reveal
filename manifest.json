@@ -1,11 +1,13 @@
 {
-    "name": "Bright Smiles Dental Clinic",
+    "name": "Bright Smiles Dental Clinic — Austin, TX",
     "short_name": "Bright Smiles",
-    "description": "Share your dental experience and unlock a personalized smile reward card",
+    "description": "Share your dental experience at Bright Smiles in Austin, TX and get a personalized smile reward card. Top-rated family dentist near you.",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#0a0e1a",
     "theme_color": "#0a0e1a",
+    "categories": ["health", "medical"],
+    "lang": "en-US",
     "icons": [
         {
             "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦷</text></svg>",

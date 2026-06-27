@@ -9,13 +9,36 @@
 const CONFIG = {
     googlePlaceId: "ChIJT4N1hQ-1j4ARgJ6S0h4FqC4",
     clinicName: "Bright Smiles",
-    contactEmail: "unknownsorcerer007@gmail.com"
+    location: "Austin, TX",
+    contactEmail: "unknownsorcerer007@gmail.com",
+    phone: "+1-512-555-0199"
 };
 
 // ==========================================
 // KEYWORDS DATABASE BY STAR RATING
 // ==========================================
 const STAR_KEYWORDS = {
+    1: {
+        vibes: ["Long Wait Time", "Rude Front Desk", "Surprise Charges", "Rough Dentist", "Unhelpful Staff", "Pushy Upselling", "Dirty Office", "Billing Issues"],
+        menu: ["Painful Cleaning", "Failed Filling", "Wrong Estimate", "Late Appointment", "Rushed Exam", "Aggressive Treatment"]
+    },
+    2: {
+        vibes: ["Below Average Care", "Disorganized Billing", "Cold Atmosphere", "Rushed Visit", "Impersonal Staff", "Noisy Waiting Room", "Long Delay"],
+        menu: ["Hurried Cleaning", "Delayed Crown", "Overcharged", "Rough Root Canal", "Basic Checkup", "Uncomfortable Scaling"]
+    },
+    3: {
+        vibes: ["Decent Treatment", "Standard Wait", "Clean Office", "Okay Experience", "Fair Bedside Manner", "Average Service", "Polite Staff"],
+        menu: ["Standard Cleaning", "Routine X-Rays", "Fair Filling", "Decent Checkup", "Average Crown", "Basic Polishing"]
+    },
+    4: {
+        vibes: ["Friendly Staff", "Short Wait", "Very Clean Office", "Caring Dentist", "Transparent Pricing", "Comfortable Chair", "Gentle Hygienist"],
+        menu: ["Gentle Cleaning", "Smooth Extraction", "Easy Filling", "Thorough Exam", "Quick Crown", "Professional Scaling"]
+    },
+    5: {
+        vibes: ["Pain-Free Experience", "Amazing Staff", "Pristine Office", "Exceptional Care", "Honest Pricing", "Welcoming Team", "Expert Dentist"],
+        menu: ["Flawless Implant", "Perfect Crown", "Painless Root Canal", "Brilliant Whitening", "Invisalign Results", "Gentle Deep Cleaning"]
+    }
+};onst STAR_KEYWORDS = {
     1: {
         vibes: ["Long Wait", "Rude Staff", "Surprise Billing", "Rough Dentist", "Unhelpful Desk", "Pushy Sales", "Poor Hygiene", "Dirty Clinic"],
         menu: ["Painful Cleaning", "Aggressive Upsell", "Failed Filling", "Wrong Estimate", "Late Appointment", "Rushed Exam"]
