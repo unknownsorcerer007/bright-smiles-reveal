@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bright Smiles — Print Templates</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f1f5f9;
+            padding: 40px 20px;
+        }
+
+        .no-print {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .no-print h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+        .no-print p {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .no-print button {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 12px 32px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 0 8px;
+            transition: all 0.2s;
+        }
+        .btn-print {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(59,130,246,0.3);
+        }
+        .btn-print:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(59,130,246,0.4); }
+        .btn-guide {
+            background: #fff;
+            color: #1e293b;
+            border: 1px solid #e2e8f0 !important;
+        }
+
+        /* Print Styles */
+        @media print {
+            body { background: #fff; padding: 0; }
+            .no-print, .page-break-info { display: none !important; }
+            .template-section { page-break-inside: avoid; }
+            .template-page { box-shadow: none !important; border: 1px solid #e2e8f0; }
+        }
+
+        /* Page Layout */
+        .print-pages {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        .template-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .section-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #3b82f6;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-label::before,
+        .section-label::after {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: #cbd5e1;
+        }
+
+        /* ==============================
+           BILL INSERT (3 per page)
+           ============================== */
+        .bill-page {
+            width: 100%;
+            max-width: 800px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            padding: 32px;
+        }
+        .bill-page-title {
+            text-align: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 12px;
+            color: #94a3b8;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .bill-inserts {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .bill-insert {
+            border: 2px dashed #cbd5e1;
+            border-radius: 10px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            background: linear-gradient(135deg, #fafbff 0%, #f8fafc 100%);
+        }
+        .bill-insert::before {
+            content: '✂️ CUT HERE';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 9px;
+            font-weight: 600;
+            color: #94a3b8;
+            letter-spacing: 1px;
+            background: #fff;
+            padding: 0 12px;
+        }
+
+        .bill-qr {
+            flex-shrink: 0;
+        }
+        .bill-qr canvas {
+            border-radius: 8px;
+        }
+
+        .bill-content {
+            flex: 1;
+        }
+        .bill-brand {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+        .bill-brand-icon {
+            font-size: 18px;
+        }
+        .bill-brand-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: 1px;
+        }
+        .bill-cta {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 3px;
+            line-height: 1.3;
+        }
+        .bill-sub {
+            font-size: 10px;
+            color: #64748b;
+            line-height: 1.4;
+        }
+        .bill-badges {
+            display: flex;
+            gap: 8px;
+            margin-top: 6px;
+        }
+        .bill-badge {
+            font-size: 9px;
+            font-weight: 500;
+            color: #3b82f6;
+            background: rgba(59,130,246,0.08);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* ==============================
+           PRESCRIPTION STICKER (6 per page)
+           ============================== */
+        .rx-page {
+            width: 100%;
+            max-width: 800px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            padding: 32px;
+        }
+        .rx-page-title {
+            text-align: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 12px;
+            color: #94a3b8;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .rx-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .rx-sticker {
+            border: 2px dashed #cbd5e1;
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            position: relative;
+        }
+        .rx-sticker::before {
+            content: '✂️';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            background: #fff;
+            padding: 0 8px;
+        }
+
+        .rx-emoji {
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+        .rx-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            color: #92400e;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .rx-qr {
+            display: flex;
+            justify-content: center;
+            margin: 8px 0;
+        }
+        .rx-qr canvas {
+            border-radius: 6px;
+        }
+        .rx-text {
+            font-size: 10px;
+            color: #78350f;
+            line-height: 1.3;
+            font-weight: 500;
+        }
+        .rx-url {
+            font-size: 8px;
+            color: #b45309;
+            margin-top: 4px;
+            opacity: 0.7;
+        }
+
+        /* ==============================
+           FULL PAGE FLYER
+           ============================== */
+        .flyer-page {
+            width: 100%;
+            max-width: 500px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .flyer-top-bar {
+            height: 6px;
+            background: linear-gradient(90deg, #2563eb, #60a5fa, #3b82f6);
+        }
+        .flyer-content {
+            padding: 32px 28px;
+            text-align: center;
+        }
+        .flyer-emoji {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+        .flyer-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+        .flyer-sub {
+            font-size: 10px;
+            font-weight: 600;
+            color: #3b82f6;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .flyer-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #2563eb, #60a5fa);
+            margin: 0 auto 20px;
+            border-radius: 1px;
+        }
+        .flyer-cta {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 6px;
+        }
+        .flyer-desc {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        .flyer-qr {
+            display: inline-block;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        .flyer-qr canvas {
+            border-radius: 10px;
+            display: block;
+        }
+        .flyer-qr-tooth {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .flyer-steps {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+        .flyer-step {
+            text-align: center;
+        }
+        .flyer-step-num {
+            width: 26px;
+            height: 26px;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: #fff;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 4px;
+        }
+        .flyer-step-text {
+            font-size: 10px;
+            color: #64748b;
+            font-weight: 500;
+        }
+        .flyer-reward {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 1px solid #f59e0b;
+            border-radius: 10px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .flyer-reward-icon { font-size: 20px; }
+        .flyer-reward-text {
+            font-size: 12px;
+            font-weight: 600;
+            color: #92400e;
+        }
+        .flyer-footer {
+            font-size: 9px;
+            color: #94a3b8;
+            letter-spacing: 0.5px;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 14px;
+        }
+        .flyer-sparkle {
+            display: inline-block;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Guide Section */
+        .guide-section {
+            max-width: 800px;
+            margin: 60px auto 0;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            padding: 32px;
+        }
+        .guide-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+        .guide-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 16px;
+        }
+        .guide-card-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .guide-card-text {
+            font-size: 12px;
+            color: #64748b;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="no-print">
+        <h1>🦷 Print Templates</h1>
+        <p>Bill inserts, prescription stickers, and waiting room flyer — ready to print</p>
+        <button class="btn-print" onclick="window.print()">🖨️ Print All Templates</button>
+        <button class="btn-guide" onclick="document.querySelector('.guide-section').scrollIntoView({behavior:'smooth'})">📋 Usage Guide</button>
+    </div>
+
+    <div class="print-pages">
+
+        <!-- ==============================
+             BILL INSERTS (3 per page)
+             ============================== -->
+        <div class="template-section">
+            <div class="section-label">Bill / Receipt Inserts</div>
+            <div class="bill-page">
+                <div class="bill-page-title">✂️ Cut along dotted lines • Attach to patient bill or receipt</div>
+                <div class="bill-inserts" id="bill-inserts">
+                    <!-- Generated by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ==============================
+             PRESCRIPTION STICKERS (6 per page)
+             ============================== -->
+        <div class="template-section">
+            <div class="section-label">Prescription Bag Stickers</div>
+            <div class="rx-page">
+                <div class="rx-page-title">✂️ Cut along dotted lines • Stick on prescription bag or envelope</div>
+                <div class="rx-grid" id="rx-grid">
+                    <!-- Generated by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ==============================
+             FULL PAGE FLYER
+             ============================== -->
+        <div class="template-section">
+            <div class="section-label">Waiting Room Flyer / Counter Stand</div>
+            <div class="flyer-page">
+                <div class="flyer-top-bar"></div>
+                <div class="flyer-content">
+                    <div class="flyer-emoji">✨</div>
+                    <div class="flyer-brand">BRIGHT SMILES</div>
+                    <div class="flyer-sub">DENTAL CLINIC — AUSTIN, TX</div>
+                    <div class="flyer-divider"></div>
+                    <div class="flyer-cta">Enjoyed Your Visit?</div>
+                    <div class="flyer-desc">
+                        Scan the QR code below to share your experience.<br>
+                        It takes less than 2 minutes — and you get a fun reward card!
+                    </div>
+                    <div class="flyer-qr" id="flyer-qr">
+                        <div class="flyer-qr-tooth">🦷</div>
+                    </div>
+                    <div class="flyer-steps">
+                        <div class="flyer-step">
+                            <div class="flyer-step-num">1</div>
+                            <div class="flyer-step-text">Scan<br>QR Code</div>
+                        </div>
+                        <div class="flyer-step">
+                            <div class="flyer-step-num">2</div>
+                            <div class="flyer-step-text">Rate Your<br>Visit</div>
+                        </div>
+                        <div class="flyer-step">
+                            <div class="flyer-step-num">3</div>
+                            <div class="flyer-step-text">Write a<br>Review</div>
+                        </div>
+                        <div class="flyer-step">
+                            <div class="flyer-step-num">4</div>
+                            <div class="flyer-step-text">Get a Fun<br>Reward!</div>
+                        </div>
+                    </div>
+                    <div class="flyer-reward">
+                        <span class="flyer-reward-icon">🎁</span>
+                        <span class="flyer-reward-text">Complete your review & receive a personalized smile card!</span>
+                    </div>
+                    <div class="flyer-footer">
+                        Scan with your phone camera • No app needed • Anonymous & Secure
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Usage Guide -->
+    <div class="guide-section no-print">
+        <div class="guide-title">📋 How to Use These Templates</div>
+        <div class="guide-grid">
+            <div class="guide-card">
+                <div class="guide-card-title">🧾 Bill Inserts</div>
+                <div class="guide-card-text">Print on regular paper. Cut along dotted lines. Staple or tape to the patient's bill/receipt. Each page has 3 inserts.</div>
+            </div>
+            <div class="guide-card">
+                <div class="guide-card-title">💊 Prescription Stickers</div>
+                <div class="guide-card-text">Print on sticker paper (Avery 5160 or similar). Cut into individual stickers. Stick on prescription bags or envelopes.</div>
+            </div>
+            <div class="guide-card">
+                <div class="guide-card-title">📄 Waiting Room Flyer</div>
+                <div class="guide-card-text">Print on cardstock for a counter stand, or regular paper for wall mounting. Can also be used as a table tent.</div>
+            </div>
+            <div class="guide-card">
+                <div class="guide-card-title">💡 Pro Tip</div>
+                <div class="guide-card-text">For best results, use a <strong>custom short URL</strong> instead of the GitHub Pages link. Example: <code>brightsmiles.com/review</code> — easier to remember and type.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- QR Code Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+    <script>
+        const REVIEW_URL = 'https://unknownsorcerer007.github.io/bright-smiles-reveal/';
+
+        function makeQR(size, container, withTooth = false) {
+            QRCode.toCanvas(document.createElement('canvas'), REVIEW_URL, {
+                width: size,
+                margin: 0,
+                color: { dark: '#0f172a', light: '#ffffff' },
+                errorCorrectionLevel: 'H'
+            }, (err, canvas) => {
+                if (err) { console.error(err); return; }
+                canvas.style.borderRadius = '6px';
+                container.appendChild(canvas);
+            });
+        }
+
+        // Generate Bill Inserts (3)
+        const billInserts = document.getElementById('bill-inserts');
+        for (let i = 0; i < 3; i++) {
+            const insert = document.createElement('div');
+            insert.className = 'bill-insert';
+            insert.innerHTML = `
+                <div class="bill-qr" id="bill-qr-${i}"></div>
+                <div class="bill-content">
+                    <div class="bill-brand">
+                        <span class="bill-brand-icon">🦷</span>
+                        <span class="bill-brand-name">BRIGHT SMILES</span>
+                    </div>
+                    <div class="bill-cta">Enjoyed your visit? Share your experience!</div>
+                    <div class="bill-sub">Scan this QR code to rate your visit and leave a review. Takes less than 2 minutes.</div>
+                    <div class="bill-badges">
+                        <span class="bill-badge">🔒 Anonymous</span>
+                        <span class="bill-badge">⏱️ 2 min</span>
+                        <span class="bill-badge">🎁 Reward</span>
+                    </div>
+                </div>
+            `;
+            billInserts.appendChild(insert);
+            makeQR(90, document.getElementById(`bill-qr-${i}`));
+        }
+
+        // Generate Prescription Stickers (6)
+        const rxGrid = document.getElementById('rx-grid');
+        for (let i = 0; i < 6; i++) {
+            const sticker = document.createElement('div');
+            sticker.className = 'rx-sticker';
+            sticker.innerHTML = `
+                <div class="rx-emoji">🦷</div>
+                <div class="rx-title">BRIGHT SMILES</div>
+                <div class="rx-qr" id="rx-qr-${i}"></div>
+                <div class="rx-text">How was your visit?<br>Scan & tell us!</div>
+                <div class="rx-url">brightsmiles.com/review</div>
+            `;
+            rxGrid.appendChild(sticker);
+            makeQR(70, document.getElementById(`rx-qr-${i}`));
+        }
+
+        // Generate Flyer QR
+        makeQR(180, document.getElementById('flyer-qr'), true);
+    </script>
+
+</body>
+</html>
