@@ -3,10 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bright Smiles - Dental Clinic Review</title>
+    <title>Bright Smiles — Share Your Experience</title>
+
+    <!-- Favicon (inline SVG) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦷</text></svg>">
+
+    <!-- Theme Color (mobile browser chrome) -->
+    <meta name="theme-color" content="#0a0e1a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Open Graph (social sharing preview) -->
+    <meta property="og:title" content="Bright Smiles Dental Clinic — Share Your Experience">
+    <meta property="og:description" content="Rate your visit, write a quick review, and unlock a personalized smile reward card!">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="char_spa.webp">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -138,6 +158,16 @@
 
                     <div class="keyword-tracker" id="keyword-tracker"></div>
 
+                    <!-- Template Suggestion -->
+                    <div class="template-card" id="template-card">
+                        <div class="template-header">
+                            <span class="template-icon">💡</span>
+                            <span>Need a head start? Try this:</span>
+                        </div>
+                        <p class="template-text" id="template-text"></p>
+                        <button class="btn-use-template" id="btn-use-template">Use this template</button>
+                    </div>
+
                     <div class="review-input-wrapper">
                         <textarea id="review-text" class="review-textarea" placeholder="Tell us about your visit... What did you like? What could be better?"></textarea>
                         <div class="review-meta">
@@ -158,6 +188,12 @@
                         <button id="btn-verify-claim" class="btn btn-reward" style="display: none;">
                             <span>Claim Your Reward 🎁</span>
                         </button>
+                    </div>
+
+                    <!-- Quick exit for impatient users -->
+                    <div class="quick-exit" id="quick-exit">
+                        <span>Just want to leave a quick review?</span>
+                        <button id="btn-skip-google" class="btn-skip">Skip to Google Reviews →</button>
                     </div>
                 </div>
             </section>
@@ -209,9 +245,15 @@
 
         <!-- Footer -->
         <footer class="app-footer">
-            <span>Powered by <strong>Bright Smiles</strong></span>
-            <span class="footer-divider">•</span>
-            <a href="mailto:unknownsorcerer007@gmail.com">Contact</a>
+            <div class="footer-brand">
+                <span class="footer-logo">🦷</span>
+                <strong>BRIGHT SMILES</strong>
+            </div>
+            <div class="footer-links">
+                <a href="mailto:unknownsorcerer007@gmail.com">Contact Us</a>
+                <span class="footer-dot">·</span>
+                <span>Your feedback matters</span>
+            </div>
         </footer>
 
         <!-- Toast -->
