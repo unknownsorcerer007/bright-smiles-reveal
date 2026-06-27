@@ -1,6 +1,6 @@
 /* ==========================================
    BRIGHT SMILES — PRODUCTION APP.JS
-   v3: Branding, frictionless UX, haptics, QR code
+   v4: Performance fixes + viral joke content
    ========================================== */
 
 // ==========================================
@@ -39,37 +39,132 @@ const STAR_KEYWORDS = {
 };
 
 // ==========================================
-// JOKES & FOOTERS
+// VIRAL JOKES — Highly shareable, no repeats
+// Pool of 40+ per category, randomly drawn
 // ==========================================
 const JOKES = {
     spa: [
-        "I told my dentist I wanted a crown. He gave me one and said, 'Now you rule the waiting room!' 👑",
-        "Why did the tooth go to the spa? It was feeling a bit decayed and needed to brush off some stress! 🧖‍♂️",
-        "My dentist told me to relax. I said I'm relaxed, I'm just grinding my teeth in my sleep to save time! 😴",
-        "What does a dentist do at a spa? Scaling back on stress! 🧘‍♂️"
+        "My dentist said I need a crown. I said finally, someone who gets me 👑",
+        "Went to the dentist and they found a cavity. My teeth are literally falling apart faster than my life decisions 💀",
+        "The dentist said I grind my teeth at night. I said that's called hustle culture 💪",
+        "Told my dentist I floss daily. He looked at me like I just said I exercise on weekends 😭",
+        "My dentist asked me if I floss. I said only when you're watching. He didn't laugh 😬",
+        "The hygienist said open wide. I said that's what my ex said too 💅",
+        "Went for a cleaning. Left feeling personally attacked by a tiny mirror 🪞",
+        "My dentist said I have the teeth of a 40 year old. I'm 22. Thanks for the existential crisis 😔",
+        "They numbed my mouth and I still felt that bill coming 💸",
+        "The dentist said my enamel is thin. Just like my patience during a root canal 🫠",
+        "Got told I brush too hard. Sorry for being passionate about dental hygiene 😤",
+        "My dentist keeps telling me to stop drinking coffee. I keep finding a new dentist ☕",
+        "Went to the dentist. They said I have a beautiful smile. Then handed me a $400 bill. Plot twist 💀",
+        "The waiting room had magazines from 2019. At least my teeth traveled back in time with me ⏰",
+        "My dentist said I have a wisdom tooth coming in. Finally, some wisdom in this family 🧠",
+        "They asked me to rate my pain 1-10. I said emotionally or physically? 😭",
+        "The dental chair reclines more than I do on weekends 🛋️",
+        "My dentist said rinse and spit. Same energy as my last relationship 💦",
+        "Got a filling today. My teeth have more filler than my Instagram bio 📱",
+        "The dentist said my teeth are shifting. Even they can't stay in one place like me 😅",
+        "Went for a checkup. Dentist said I have great roots. Unlike my dating history 🌱",
+        "They put a mirror in my mouth and I finally saw what my ex was talking about 🪞",
+        "My dentist said I bite my nails. I said only when the WiFi is down 😬",
+        "The X-ray showed everything. My dentist knows more about me than my therapist 📸",
+        "Got my teeth cleaned. Now I'm scared to eat. That's not a cleaning, that's a hostage situation 🍕",
+        "The dentist said my gums are receding. Even my mouth is pulling away from me 😩",
+        "Went for a teeth whitening. Came out looking like I bite ice cubes for fun 🧊",
+        "My dentist said I have a sweet tooth. I said I have 28 of them, don't single one out 🍬",
+        "They gave me a toothbrush at the end. That's like a gym giving you a salad after a workout 🥗",
+        "The dental hygienist scraped my teeth for 30 minutes. That's not cleaning, that's archaeology 🦴",
+        "My dentist said I need to floss more. I said I need a lot of things, Karen 💁‍♀️",
+        "Went to the dentist and they played calming music. Sir, nothing about this is calm 🎵",
+        "The numbing wore off mid-procedure. 0/10 would not recommend the raw experience 😱",
+        "My dentist has better lighting than my ring light. Maybe I should film content there 💡",
+        "They said open wide. My bank account already did that at reception 💳",
+        "The dentist found 3 cavities. I found 3 reasons to cry 🥲",
+        "My tooth fairy is filing for bankruptcy at this point 🧚",
+        "Went for a simple cleaning. Left with a treatment plan longer than my Netflix watchlist 📋",
+        "The dentist said I have a strong jaw. That's because I've been clenching through 2025 😤",
+        "They asked if I'm nervous. I said I'm paying hundreds of dollars for someone to judge my teeth. What do you think? 😰"
     ],
     vacation: [
-        "Where do teeth go on vacation? To the beach, to get some fresh enamel and clean tide! 🏖️",
-        "Why did the tooth drive a convertible? To feel the wind in its crowns! 🏎️",
-        "Taking a vacation from plaque and tartar. Ultimate dental freedom! 🏝️",
-        "What is a tooth's favorite vacation destination? Fill-adelphia! ✈️"
+        "My teeth are on vacation. They haven't seen a dentist in 3 years 🏖️",
+        "Taking a break from flossing. My gums need to miss me first 🌴",
+        "My enamel said it needs a vacation from my diet. Fair point 🏝️",
+        "Went to the beach and got sand in my teeth. That's not the deep clean I wanted 🏖️",
+        "My teeth are whiter than my vacation photos. Thanks dentist 📸",
+        "Plaque took a permanent vacation. You're welcome, gums 🎉",
+        "My dentist said my teeth look rested. I said they've been sleeping all year 😴",
+        "Came back from vacation with a tan and a cavity. Priorities 🌞",
+        "My wisdom teeth took a one-way vacation. They're not coming back 🦷✈️",
+        "Post-vacation dental checkup: 2 new cavities, 1 regret, 0 lessons learned 🤷",
+        "My teeth went on strike during vacation. No floss, no brush, just vibes 🏖️",
+        "Vacation calories don't count but vacation cavities definitely do 🍦",
+        "Flossed on vacation. That's character development right there 📈",
+        "My dentist asked about my vacation diet. I said we don't talk about that 🤫",
+        "Teeth whitening before vacation was the best investment. Every photo hits different ✨",
+        "Brought back souvenirs from vacation. 2 cavities and a chipped tooth from ice 🎁",
+        "My vacation smile was powered by 3 days of not drinking coffee. Temporary insanity ☕",
+        "Came back with a vacation glow and a dental bill that killed the vibe 💀",
+        "My teeth survived vacation but my floss didn't make it through customs 🧳",
+        "Vacation mode: activated. Flossing mode: we don't know her 🌊",
+        "The resort had a dental clinic. Even my teeth got the spa treatment 🏨",
+        "Skipped the dentist for vacation. Now I'm back with interest on my dental debt 💸",
+        "Vacation photos look great. The close-up ones... we don't discuss those 📷",
+        "My teeth partied harder than I did on vacation. The evidence is at the dentist 🎊",
+        "Went snorkeling. My teeth saw more action than I did 🤿",
+        "Vacation tip: pack more floss than underwear. Trust me on this one 🩲",
+        "Came back from vacation. My toothbrush is filing a missing person report 🔍",
+        "My dentist said vacation was rough on my teeth. I said you should see my liver 🍹",
+        "Beach vacation + no floss = plaque paradise. My dentist is having a field day 🏖️",
+        "My teeth need a vacation from my vacation. That's how good it was 🌅",
+        "Vacation selfie game strong. Dental game... we're working on it 🤳",
+        "Lost my toothbrush on day 1. Used my finger for 5 days. Innovation 🤙",
+        "My dentist said my teeth look like I went on vacation. I said isn't it obvious? 😎",
+        "Came back tanned, relaxed, and with 1 new cavity. The vacation trifecta 🏆",
+        "My teeth sent me a postcard from vacation. It said 'SEND FLOSS' 📮"
     ],
     camera: [
-        "Why did the tooth smile for the camera? Because it knew it was lookin' brilliant and bright! 📸",
-        "What did the camera say to the clean tooth? 'You make me feel so photogenic!' ✨",
-        "Keep smiling! It makes people wonder what you've been up to... or if you just got a dental cleaning! 😁",
-        "Say 'Cheese'? No, say 'Bright Smiles'! 🦷"
+        "My dentist gave me a smile so bright, my phone camera needed sunglasses 😎",
+        "Took a selfie after my dental cleaning. My teeth are the main character now 📸",
+        "Smiling so wide after my cleaning, my face hurts. Worth every penny 😁",
+        "My teeth are so clean, they're reflecting light like a diamond 💎",
+        "Post-dentist selfie hits different when your teeth are actually clean 📱",
+        "Camera loves my new smile. My dentist is basically a photographer now 📷",
+        "My teeth went from 480p to 4K after that cleaning. Ultra HD smile 🖥️",
+        "Took 47 selfies after my dental visit. My teeth finally match my confidence 🤳",
+        "My dentist said my smile is their best work. I said put it on the website 🌐",
+        "Teeth so white, my camera auto-adjusted the exposure 📸✨",
+        "Smiled at my phone and it unlocked with Face ID from across the room 📱",
+        "My teeth are now the brightest thing in every photo. Sorry sunset 🌅",
+        "Posted a smile pic and got more likes than my vacation photos. Dentist > Beach 🏖️",
+        "My dentist should get credit for my Instagram engagement. These teeth are content 📈",
+        "After my cleaning, even my resting face looks happy. That's dental magic 🪄",
+        "My smile is so bright, people think I'm using a filter. Nope, just good dental care 📷",
+        "Took a group photo. My teeth got their own spotlight. Main character energy 🌟",
+        "My dentist said keep smiling. I said have you seen these teeth? Of course I will 😄",
+        "Zoom call after dental cleaning. Everyone asked what I did different. It's called flossing 💻",
+        "My teeth are camera-ready 24/7 now. That's called investing in yourself 🎬",
+        "Smiled for my passport photo. They said I look like a different person. Thanks Dr! 🛂",
+        "My teeth are so clean, I can see my reflection in them. Free mirror 🪞",
+        "Took a bite of an apple post-cleaning. That crunch was cinematic 🍎",
+        "My smile has more sparkle than my personality and I'm okay with that ✨",
+        "Every photo now: teeth first, background second. New hierarchy 📐",
+        "My dentist turned my smile into a weapon of mass attraction 🧲",
+        "Friends asked for my dentist's number. My teeth are doing the marketing 📞",
+        "My smile is proof that good things come to those who floss 🪥",
+        "Camera can't handle my post-dentist glow. Even the AI beautify is confused 🤖",
+        "My teeth are so photogenic, they should be paying rent on my Instagram 📸"
     ]
 };
 
+// ==========================================
+// FOOTERS
+// ==========================================
 const FOOTERS = [
     "Your Smile Is A Lot For Us",
     "Smile Responsibly",
     "Compliments Ahead",
     "Handle This Smile With Care"
 ];
-
-
 
 // ==========================================
 // APP STATE
@@ -86,7 +181,8 @@ const state = {
     footer: '',
     isCopied: false,
     isScratched: false,
-    screenHistory: []
+    screenHistory: [],
+    usedJokes: new Set() // Track used jokes to prevent repeats
 };
 
 // ==========================================
@@ -132,7 +228,7 @@ const dom = {
 };
 
 // ==========================================
-// HAPTIC FEEDBACK (Vibration API)
+// HAPTIC FEEDBACK
 // ==========================================
 function haptic(type = 'light') {
     if (!navigator.vibrate) return;
@@ -308,7 +404,6 @@ function validateKeywords() {
     const isComplete = state.selectedVibes.length === 2 && state.selectedMenu.length === 1;
     dom.btnConfirmKeywords.disabled = !isComplete;
 
-    // Auto-advance when all keywords selected
     if (isComplete) {
         haptic('success');
         setTimeout(() => {
@@ -321,7 +416,6 @@ function validateKeywords() {
     }
 }
 
-// Manual button click fallback
 dom.btnConfirmKeywords.addEventListener('click', () => {
     state.selectedKeywords = [...state.selectedVibes, ...state.selectedMenu];
     state.footer = FOOTERS[Math.floor(Math.random() * FOOTERS.length)];
@@ -334,12 +428,28 @@ function assignCardTheme() {
     if (state.selectedStars <= 3) {
         state.cardTheme = 'spa';
         state.cardImage = 'char_spa.webp';
-        state.joke = randomPick(JOKES.spa);
+        state.joke = getUniqueJoke('spa');
     } else {
         state.cardTheme = Math.random() < 0.5 ? 'vacation' : 'camera';
         state.cardImage = `char_${state.cardTheme}.webp`;
-        state.joke = randomPick(JOKES[state.cardTheme]);
+        state.joke = getUniqueJoke(state.cardTheme);
     }
+}
+
+// Get a joke that hasn't been used yet
+function getUniqueJoke(category) {
+    const pool = JOKES[category];
+    const available = pool.filter(j => !state.usedJokes.has(j));
+
+    // If all used, reset
+    if (available.length === 0) {
+        state.usedJokes.clear();
+        return pool[Math.floor(Math.random() * pool.length)];
+    }
+
+    const joke = available[Math.floor(Math.random() * available.length)];
+    state.usedJokes.add(joke);
+    return joke;
 }
 
 // ==========================================
@@ -356,7 +466,6 @@ function initWriterScreen() {
     dom.btnVerifyClaim.style.display = 'none';
     dom.btnCopyReview.style.display = 'flex';
 
-    // Render keyword tracker
     dom.keywordTracker.innerHTML = '';
     state.selectedKeywords.forEach(kw => {
         const chip = document.createElement('span');
@@ -365,8 +474,6 @@ function initWriterScreen() {
         chip.dataset.keyword = kw.toLowerCase();
         dom.keywordTracker.appendChild(chip);
     });
-
-    // Template removed per Google review policy (no pre-filled content)
 }
 
 dom.reviewText.addEventListener('input', () => {
@@ -374,7 +481,6 @@ dom.reviewText.addEventListener('input', () => {
     const len = text.length;
     dom.reviewCharCount.textContent = `${len} character${len !== 1 ? 's' : ''}`;
 
-    // Check keywords (word boundary matching)
     let allFound = true;
     state.selectedKeywords.forEach(kw => {
         const chip = dom.keywordTracker.querySelector(`[data-keyword="${kw.toLowerCase()}"]`);
@@ -384,7 +490,6 @@ dom.reviewText.addEventListener('input', () => {
         if (!found) allFound = false;
     });
 
-    // Quality indicator
     if (len < 20) {
         dom.reviewQuality.textContent = 'Keep writing...';
         dom.reviewQuality.className = 'quality-indicator';
@@ -408,12 +513,9 @@ dom.reviewText.addEventListener('input', () => {
     }
 });
 
-// Copy review
 dom.btnCopyReview.addEventListener('click', async () => {
     const text = dom.reviewText.value;
-    try {
-        await navigator.clipboard.writeText(text);
-    } catch {
+    try { await navigator.clipboard.writeText(text); } catch {
         const ta = document.createElement('textarea');
         ta.value = text;
         ta.style.position = 'fixed';
@@ -432,38 +534,37 @@ dom.btnCopyReview.addEventListener('click', async () => {
     dom.btnGotoGoogle.style.display = 'flex';
     dom.btnVerifyClaim.style.display = 'flex';
     dom.btnCopyReview.style.display = 'none';
-
-
 });
 
-// Go to Google Reviews
 dom.btnGotoGoogle.addEventListener('click', () => {
     window.open(`https://search.google.com/local/writereview?placeid=${CONFIG.googlePlaceId}`, '_blank');
 });
 
-// Skip to Google (quick exit)
 if (dom.btnSkipGoogle) {
     dom.btnSkipGoogle.addEventListener('click', () => {
         window.open(`https://search.google.com/local/writereview?placeid=${CONFIG.googlePlaceId}`, '_blank');
     });
 }
 
-// Claim reward
 dom.btnVerifyClaim.addEventListener('click', () => {
     navigateTo('scratch');
-    requestAnimationFrame(() => setupScratchCard());
+    // Small delay to let the screen render before setting up canvas
+    setTimeout(() => setupScratchCard(), 50);
 });
 
 // ==========================================
-// SCREEN 4: SCRATCH CARD
+// SCREEN 4: SCRATCH CARD (OPTIMIZED)
 // ==========================================
 let scratchCtx = null;
 let isDrawing = false;
+let scratchCheckCounter = 0;
 
 function setupScratchCard() {
     state.isScratched = false;
+    scratchCheckCounter = 0;
     dom.btnGoToShare.style.display = 'none';
 
+    // Build reveal card content FIRST (before canvas)
     const revealCard = document.getElementById('scratch-reveal-card');
     if (revealCard) {
         revealCard.className = `scratch-reveal-card card-theme-${state.cardTheme}`;
@@ -482,21 +583,22 @@ function setupScratchCard() {
         `;
     }
 
+    // Setup canvas with proper dimensions
     const container = dom.scratchContainer;
     const canvas = dom.scratchCanvas;
     const dpr = window.devicePixelRatio || 1;
-    const w = container.clientWidth;
-    const h = container.clientHeight;
+    const w = container.clientWidth || 280;
+    const h = container.clientHeight || 435;
 
     canvas.width = w * dpr;
     canvas.height = h * dpr;
     canvas.style.width = w + 'px';
     canvas.style.height = h + 'px';
 
-    scratchCtx = canvas.getContext('2d');
+    scratchCtx = canvas.getContext('2d', { willReadFrequently: true });
     scratchCtx.scale(dpr, dpr);
 
-    // Draw scratch overlay
+    // Draw overlay
     const grad = scratchCtx.createLinearGradient(0, 0, w, h);
     grad.addColorStop(0, '#1e3a5f');
     grad.addColorStop(0.5, '#2563eb');
@@ -516,7 +618,7 @@ function setupScratchCard() {
     scratchCtx.lineWidth = 12;
     scratchCtx.strokeRect(6, 6, w - 12, h - 12);
 
-    // Remove old listeners before adding new
+    // Attach events (using direct assignment to avoid stacking)
     canvas.onmousedown = scratchStart;
     canvas.onmousemove = scratchMove;
     canvas.onmouseup = scratchEnd;
@@ -551,15 +653,21 @@ function scratchMove(e) {
     scratchCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
     scratchCtx.globalCompositeOperation = 'destination-out';
     scratchCtx.beginPath();
-    scratchCtx.arc(x, y, 40, 0, Math.PI * 2);
+    scratchCtx.arc(x, y, 42, 0, Math.PI * 2);
     scratchCtx.fill();
     scratchCtx.restore();
 
-    checkScratchProgress();
+    // Throttle progress checks — every 3rd stroke
+    scratchCheckCounter++;
+    if (scratchCheckCounter % 3 === 0) {
+        checkScratchProgress();
+    }
 }
 
 function scratchEnd() {
     isDrawing = false;
+    // Final check on lift
+    if (!state.isScratched) checkScratchProgress();
 }
 
 function checkScratchProgress() {
@@ -568,26 +676,35 @@ function checkScratchProgress() {
     const canvas = dom.scratchCanvas;
     const w = canvas.width;
     const h = canvas.height;
+
+    // Sample a subset of rows for performance (every 4th row)
     const imgData = scratchCtx.getImageData(0, 0, w, h);
     const pixels = imgData.data;
     let transparent = 0;
-    const total = pixels.length / 4;
+    let total = 0;
+    const rowStep = 4;
 
-    for (let i = 3; i < pixels.length; i += 4) {
-        if (pixels[i] === 0) transparent++;
+    for (let row = 0; row < h; row += rowStep) {
+        for (let col = 0; col < w; col++) {
+            const i = (row * w + col) * 4 + 3;
+            total++;
+            if (pixels[i] === 0) transparent++;
+        }
     }
 
     const pct = (transparent / total) * 100;
-    if (pct > 15) {
+    if (pct > 18) {
         state.isScratched = true;
         haptic('success');
-        canvas.style.transition = 'opacity 0.5s ease-out';
+
+        canvas.style.transition = 'opacity 0.4s ease-out';
         canvas.style.opacity = '0';
         spawnConfetti(40);
+
         setTimeout(() => {
             canvas.style.display = 'none';
             dom.btnGoToShare.style.display = 'flex';
-        }, 500);
+        }, 400);
     }
 }
 
@@ -745,9 +862,15 @@ function spawnConfetti(count = 40) {
 }
 
 // ==========================================
-// INIT
+// INIT — Preload images for scratch card
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
+    // Preload card images so scratch card loads instantly
+    ['char_spa.webp', 'char_vacation.webp', 'char_camera.webp'].forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+
     initStarRating();
     navigateTo('stars', false);
 });
