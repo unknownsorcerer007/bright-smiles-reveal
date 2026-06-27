@@ -1,136 +1,20 @@
 /* ==========================================
-   MASCOTS DATABASE WITH PREMIUM CULINARY SVGs
+   BRIGHT SMILES — REDESIGNED APP.JS
+   Clean, modular, feature-complete
    ========================================== */
-const MASCOTS = [
-    {
-        id: "silver_cloche",
-        name: "THE SILVER CLOCHE",
-        desc: "A polished silver serving dome with a gentle smile and golden handles.",
-        svg: `<svg viewBox="0 0 100 100" width="100%" height="100%">
-            <!-- Dome base plate -->
-            <rect x="15" y="75" width="70" height="6" fill="#bdc3c7" stroke="#7f8c8d" stroke-width="2" rx="2" />
-            <!-- Dome -->
-            <path d="M 20 75 A 30 30 0 0 1 80 75 Z" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2" />
-            <!-- Handle -->
-            <circle cx="50" cy="40" r="6" fill="#c5a059" stroke="#e0b869" stroke-width="1.5" />
-            <!-- Face -->
-            <circle cx="42" cy="62" r="3" fill="#0b0b0c" />
-            <circle cx="58" cy="62" r="3" fill="#0b0b0c" />
-            <path d="M 45 68 Q 50 71 55 68" stroke="#0b0b0c" stroke-width="2.5" fill="none" />
-            <!-- Glow/Shine -->
-            <path d="M 30 55 A 20 20 0 0 1 50 48" stroke="#ffffff" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6" />
-        </svg>`
-    },
-    {
-        id: "monocle_wine",
-        name: "MONOCLE WINE GLASS",
-        desc: "A sophisticated glass of red wine wearing a gold monocle.",
-        svg: `<svg viewBox="0 0 100 100" width="100%" height="100%">
-            <!-- Glass stem & base -->
-            <line x1="50" y1="65" x2="50" y2="88" stroke="#bdc3c7" stroke-width="3.5" />
-            <ellipse cx="50" cy="88" rx="20" ry="4" fill="none" stroke="#bdc3c7" stroke-width="3" />
-            <!-- Glass bowl outline -->
-            <path d="M 30 30 C 30 65, 70 65, 70 30 Z" fill="none" stroke="#bdc3c7" stroke-width="3" />
-            <!-- Red wine fill -->
-            <path d="M 32 42 C 32 60, 68 60, 68 42 Z" fill="#e51937" opacity="0.9" />
-            <!-- Monocle (Gold) -->
-            <circle cx="40" cy="38" r="7" fill="none" stroke="#e0b869" stroke-width="2" />
-            <line x1="47" y1="38" x2="62" y2="28" stroke="#e0b869" stroke-width="1.5" />
-            <!-- Face -->
-            <circle cx="40" cy="38" r="1.5" fill="#0b0b0c" />
-            <circle cx="58" cy="38" r="2.5" fill="#0b0b0c" />
-            <path d="M 45 48 Q 50 51 55 48" stroke="#ffffff" stroke-width="2" fill="none" />
-        </svg>`
-    },
-    {
-        id: "fancy_truffle",
-        name: "THE FANCY TRUFFLE",
-        desc: "An organic black truffle mushroom wearing a gold top hat.",
-        svg: `<svg viewBox="0 0 100 100" width="100%" height="100%">
-            <!-- Truffle Body -->
-            <path d="M 30 75 C 20 75, 20 50, 35 45 C 45 40, 55 40, 65 45 C 80 50, 80 75, 70 75 Z" fill="#3a3835" stroke="#252422" stroke-width="3" />
-            <circle cx="38" cy="55" r="2" fill="#252422" />
-            <circle cx="62" cy="58" r="2" fill="#252422" />
-            <circle cx="50" cy="70" r="2.5" fill="#252422" />
-            <!-- Top Hat (Gold) -->
-            <rect x="35" y="20" width="30" height="20" fill="#c5a059" stroke="#e0b869" stroke-width="1.5" rx="2" />
-            <ellipse cx="50" cy="40" rx="22" ry="4" fill="#c5a059" stroke="#e0b869" stroke-width="1.5" />
-            <!-- Face -->
-            <circle cx="42" cy="54" r="3" fill="#ffffff" />
-            <circle cx="42" cy="54" r="1.5" fill="#0b0b0c" />
-            <circle cx="58" cy="54" r="3" fill="#ffffff" />
-            <circle cx="58" cy="54" r="1.5" fill="#0b0b0c" />
-            <path d="M 47 62 Q 50 64 53 62" stroke="#ffffff" stroke-width="2.5" fill="none" />
-        </svg>`
-    },
-    {
-        id: "sizzling_steak",
-        name: "SIZZLING FILET",
-        desc: "A premium dry-aged steak with gold grill marks.",
-        svg: `<svg viewBox="0 0 100 100" width="100%" height="100%">
-            <!-- Steak Body -->
-            <path d="M 25 50 C 20 30, 80 25, 80 50 C 80 75, 20 70, 25 50 Z" fill="#5c2523" stroke="#3a1716" stroke-width="3" />
-            <!-- Gold Grill Marks -->
-            <line x1="38" y1="35" x2="48" y2="65" stroke="#e0b869" stroke-width="2.5" opacity="0.7" />
-            <line x1="50" y1="32" x2="60" y2="62" stroke="#e0b869" stroke-width="2.5" opacity="0.7" />
-            <line x1="62" y1="35" x2="72" y2="65" stroke="#e0b869" stroke-width="2.5" opacity="0.7" />
-            <!-- Butter Pat (Gold) -->
-            <rect x="42" y="42" width="12" height="10" fill="#f1c40f" stroke="#c5a059" stroke-width="1" rx="1" transform="rotate(15 48 47)" />
-            <!-- Face -->
-            <circle cx="34" cy="48" r="2.5" fill="#ffffff" />
-            <circle cx="34" cy="48" r="1" fill="#000" />
-            <circle cx="68" cy="48" r="2.5" fill="#ffffff" />
-            <circle cx="68" cy="48" r="1" fill="#000" />
-            <path d="M 47 56 Q 50 59 53 56" stroke="#ffffff" stroke-width="2" fill="none" />
-        </svg>`
-    },
-    {
-        id: "golden_bell",
-        name: "THE SERVICE BELL",
-        desc: "A high-end brass service bell looking elegant and clean.",
-        svg: `<svg viewBox="0 0 100 100" width="100%" height="100%">
-            <!-- Stand -->
-            <rect x="20" y="75" width="60" height="8" fill="#1e1e20" stroke="#c5a059" stroke-width="1.5" rx="3" />
-            <!-- Bell Dome -->
-            <path d="M 28 75 C 28 40, 72 40, 72 75 Z" fill="#c5a059" stroke="#e0b869" stroke-width="2" />
-            <!-- Top Button plunger -->
-            <rect x="47" y="32" width="6" height="12" fill="#c5a059" />
-            <ellipse cx="50" cy="30" rx="8" ry="4" fill="#e0b869" />
-            <!-- Face -->
-            <circle cx="43" cy="60" r="3" fill="#000" />
-            <circle cx="57" cy="60" r="3" fill="#000" />
-            <path d="M 46 66 Q 50 69 54 66" stroke="#000" stroke-width="2.5" fill="none" />
-        </svg>`
-    },
-    {
-        id: "espresso_martini",
-        name: "THE MARTINI GLASS",
-        desc: "An elegant espresso martini glass with three coffee beans on top.",
-        svg: `<svg viewBox="0 0 100 100" width="100%" height="100%">
-            <!-- Base & Stem -->
-            <line x1="50" y1="58" x2="50" y2="85" stroke="#bdc3c7" stroke-width="2.5" />
-            <ellipse cx="50" cy="85" rx="18" ry="3" fill="none" stroke="#bdc3c7" stroke-width="2" />
-            <!-- Martini V-shape -->
-            <polygon points="25,25 75,25 50,58" fill="none" stroke="#bdc3c7" stroke-width="2.5" />
-            <!-- Espresso fill -->
-            <polygon points="29,30 71,30 50,58" fill="#3a2312" />
-            <!-- Foam Layer -->
-            <rect x="28" y="27" width="44" height="4" fill="#d2b48c" rx="1" />
-            <!-- Coffee Beans -->
-            <ellipse cx="44" cy="22" rx="3" ry="1.5" fill="#1b0e07" transform="rotate(30 44 22)" />
-            <ellipse cx="50" cy="20" rx="3" ry="1.5" fill="#1b0e07" transform="rotate(-15 50 20)" />
-            <ellipse cx="56" cy="22" rx="3" ry="1.5" fill="#1b0e07" transform="rotate(45 56 22)" />
-            <!-- Face -->
-            <circle cx="45" cy="40" r="2.5" fill="#fff" />
-            <circle cx="55" cy="40" r="2.5" fill="#fff" />
-            <path d="M 47 48 Q 50 50 53 48" stroke="#fff" stroke-width="2" fill="none" />
-        </svg>`
-    }
-];
 
-/* ==========================================
-   KEYWORDS DATABASE BY STAR RATING
-   ========================================== */
+// ==========================================
+// CONFIG — Change these per clinic
+// ==========================================
+const CONFIG = {
+    googlePlaceId: "ChIJT4N1hQ-1j4ARgJ6S0h4FqC4",
+    clinicName: "Bright Smiles",
+    contactEmail: "unknownsorcerer007@gmail.com"
+};
+
+// ==========================================
+// KEYWORDS DATABASE BY STAR RATING
+// ==========================================
 const STAR_KEYWORDS = {
     1: {
         vibes: ["Long Wait", "Rude Staff", "Surprise Billing", "Rough Dentist", "Unhelpful Desk", "Pushy Sales", "Poor Hygiene", "Dirty Clinic"],
@@ -154,568 +38,712 @@ const STAR_KEYWORDS = {
     }
 };
 
-/* ==========================================
-   ROASTS & BADGES DATABASE (Witty / Upscale)
-   ========================================== */
-const CRITICAL_ROASTS = [
-    { badge: "DENTAL CRITIC", roast: "Ouch! A review so sharp it feels like a root canal without anesthesia. Thanks for the honest drill! 🦷" },
-    { badge: "SURPRISE CHARGE SURVIVOR", roast: "Analyzing the bill like a forensic accountant. We appreciate you exposing those sneaky upsells! 💸" },
-    { badge: "CAVITY DETECTOR", roast: "Spotting errors in our service like a digital X-ray. Sharp eye, sharp critique!" },
-    { badge: "SKEPTICAL PATIENT", roast: "Not buying the 'pain-free' promise. We respect your healthy skepticism! 🤫" },
-    { badge: "ENAMEL DEFENDER", roast: "Fiercely protective of your teeth and your wallet. A review with real bite!" }
+// ==========================================
+// JOKES & FOOTERS
+// ==========================================
+const JOKES = {
+    spa: [
+        "I told my dentist I wanted a crown. He gave me one and said, 'Now you rule the waiting room!' 👑",
+        "Why did the tooth go to the spa? It was feeling a bit decayed and needed to brush off some stress! 🧖‍♂️",
+        "My dentist told me to relax. I said I'm relaxed, I'm just grinding my teeth in my sleep to save time! 😴",
+        "What does a dentist do at a spa? Scaling back on stress! 🧘‍♂️"
+    ],
+    vacation: [
+        "Where do teeth go on vacation? To the beach, to get some fresh enamel and clean tide! 🏖️",
+        "Why did the tooth drive a convertible? To feel the wind in its crowns! 🏎️",
+        "Taking a vacation from plaque and tartar. Ultimate dental freedom! 🏝️",
+        "What is a tooth's favorite vacation destination? Fill-adelphia! ✈️"
+    ],
+    camera: [
+        "Why did the tooth smile for the camera? Because it knew it was lookin' brilliant and bright! 📸",
+        "What did the camera say to the clean tooth? 'You make me feel so photogenic!' ✨",
+        "Keep smiling! It makes people wonder what you've been up to... or if you just got a dental cleaning! 😁",
+        "Say 'Cheese'? No, say 'Bright Smiles'! 🦷"
+    ]
+};
+
+const FOOTERS = [
+    "Your Smile Is A Lot For Us",
+    "Smile Responsibly",
+    "Compliments Ahead",
+    "Handle This Smile With Care"
 ];
 
-const POSITIVE_ROASTS = [
-    { badge: "SMILE CONQUEROR", roast: "Walked in for a checkup, walked out looking like a Hollywood star. Brilliant smile! ✨" },
-    { badge: "PLAQUE PATROL", roast: "Fierce advocate of flossing. Your dental hygienist is shedding tears of absolute joy! 🪥" },
-    { badge: "ROOT CANAL HERO", roast: "Surviving a root canal with absolute poise and dignity. You deserve a gold medal! 🏅" },
-    { badge: "SHINY TEETH ROYALTY", roast: "Enamel so bright it's blinding our clinic lights. Magnificent dental hygiene! 🌟" },
-    { badge: "CROWNED PATIENT", roast: "Got a crown and wearing it like royalty. Sophisticated taste!" },
-    { badge: "HYGIENE ENTHUSIAST", roast: "Brushing three times a day and using mouthwash. The model patient! 🦷" },
-    { badge: "WISDOM TOOTH SURVIVOR", roast: "Kept your cool while the dentist pulled those wisdom teeth. Absolute legend! 🦷" },
-    { badge: "FLOSSING CHAMPION", roast: "Flossing every single day without fail. Dental hygienist's dream come true!" },
-    { badge: "ANESTHESIA MASTER", roast: "Numb face, drooling slightly, but still writing reviews. That's dedication! 💉" },
-    { badge: "CLINIC FAVOURITE", roast: "Polite smiles, clean teeth, prompt arrival. You are officially our favourite patient! 🦷" }
-];
-
-/* ==========================================
-   APP STATE
-   ========================================== */
-let appState = {
+// ==========================================
+// APP STATE
+// ==========================================
+const state = {
+    currentScreen: 'stars',
     selectedStars: 0,
-    selectedVibes: [], // Max 2
-    selectedMenu: [],  // Max 1
-    selectedKeywords: [], 
-    selectedCardTheme: "",
-    selectedCardImage: "",
-    selectedJoke: "",
-    selectedFooter: "",
+    selectedVibes: [],
+    selectedMenu: [],
+    selectedKeywords: [],
+    cardTheme: '',
+    cardImage: '',
+    joke: '',
+    footer: '',
     isCopied: false,
-    isScratched: false
+    isScratched: false,
+    screenHistory: []
 };
 
-/* ==========================================
-   DOM ELEMENTS
-   ========================================== */
-const screens = {
-    stars: document.getElementById("screen-stars"),
-    keywords: document.getElementById("screen-keywords"),
-    writer: document.getElementById("screen-writer"),
-    scratch: document.getElementById("screen-scratch"),
-    share: document.getElementById("screen-share")
+// ==========================================
+// DOM REFS
+// ==========================================
+const $ = (sel) => document.querySelector(sel);
+const $$ = (sel) => document.querySelectorAll(sel);
+
+const dom = {
+    screens: {
+        stars: $('#screen-stars'),
+        keywords: $('#screen-keywords'),
+        writer: $('#screen-writer'),
+        scratch: $('#screen-scratch'),
+        share: $('#screen-share')
+    },
+    backBtn: $('#back-btn'),
+    progressBar: $('#progress-bar'),
+    starBtns: $$('.star-btn'),
+    ratingFeedback: $('#rating-feedback'),
+    containerVibes: $('#container-vibes'),
+    containerMenu: $('#container-menu'),
+    vibeCount: $('#vibe-count'),
+    menuCount: $('#menu-count'),
+    btnConfirmKeywords: $('#btn-confirm-keywords'),
+    keywordTracker: $('#keyword-tracker'),
+    reviewText: $('#review-text'),
+    reviewCharCount: $('#review-char-count'),
+    reviewQuality: $('#review-quality'),
+    btnCopyReview: $('#btn-copy-review'),
+    copySubtext: $('#copy-subtext'),
+    btnGotoGoogle: $('#btn-goto-google'),
+    btnVerifyClaim: $('#btn-verify-claim'),
+    scratchContainer: $('#scratch-container'),
+    scratchCanvas: $('#scratch-canvas'),
+    btnGoToShare: $('#btn-go-to-share'),
+    btnShareInstagram: $('#btn-share-instagram'),
+    btnShareWhatsapp: $('#btn-share-whatsapp'),
+    btnRestart: $('#btn-restart'),
+    toast: $('#app-toast'),
+    confettiCanvas: $('#confetti-canvas')
 };
 
-/* ==========================================
-   SCREEN NAVIGATION
-   ========================================== */
-function navigateTo(screenId) {
-    Object.values(screens).forEach(screen => {
-        if (screen) {
-            screen.classList.remove("active");
-        }
-    });
-    if (screens[screenId]) {
-        screens[screenId].classList.add("active");
+// ==========================================
+// SCREEN NAVIGATION
+// ==========================================
+const SCREEN_STEPS = { stars: 1, keywords: 2, writer: 3, scratch: 4, share: 4 };
+
+function navigateTo(screenId, pushHistory = true) {
+    if (pushHistory && state.currentScreen) {
+        state.screenHistory.push(state.currentScreen);
     }
-    window.scrollTo(0, 0);
+
+    // Hide all screens
+    Object.values(dom.screens).forEach(s => s.classList.remove('active'));
+
+    // Show target
+    const target = dom.screens[screenId];
+    if (target) {
+        target.classList.add('active');
+        target.style.animation = 'none';
+        target.offsetHeight; // reflow
+        target.style.animation = '';
+    }
+
+    state.currentScreen = screenId;
+
+    // Update progress
+    const step = SCREEN_STEPS[screenId] || 1;
+    dom.progressBar.style.width = `${(step / 4) * 100}%`;
+
+    // Update step dots
+    $$('.step-dot').forEach((dot, i) => {
+        dot.classList.remove('active', 'completed');
+        if (i + 1 < step) dot.classList.add('completed');
+        else if (i + 1 === step) dot.classList.add('active');
+    });
+    $$('.step-connector').forEach((conn, i) => {
+        conn.classList.toggle('active', i + 1 < step);
+    });
+
+    // Back button
+    dom.backBtn.classList.toggle('visible', state.screenHistory.length > 0);
+
+    // Scroll to top
+    dom.screens[screenId]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-/* ==========================================
-   SCREEN 1: STAR RATING LOGIC
-   ========================================== */
-const starBtns = document.querySelectorAll(".star-btn");
-const ratingLabel = document.querySelector(".rating-label");
-
-starBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-        const rating = parseInt(btn.getAttribute("data-value"));
-        appState.selectedStars = rating;
-        
-        starBtns.forEach((sBtn, idx) => {
-            if (idx < rating) {
-                sBtn.classList.add("selected");
-            } else {
-                sBtn.classList.remove("selected");
-            }
-        });
-
-        ratingLabel.innerHTML = `<span class="text-yellow">${rating} Star${rating > 1 ? 's' : ''} - Redirecting to review curator...</span>`;
-        setTimeout(() => {
-            initializeKeywordsScreen();
-            navigateTo("keywords");
-        }, 1000);
-    });
-
-    btn.addEventListener("mouseenter", () => {
-        const val = parseInt(btn.getAttribute("data-value"));
-        starBtns.forEach((sBtn, idx) => {
-            if (idx < val) {
-                sBtn.classList.add("hover");
-            } else {
-                sBtn.classList.remove("hover");
-            }
-        });
-    });
-
-    btn.addEventListener("mouseleave", () => {
-        starBtns.forEach(sBtn => sBtn.classList.remove("hover"));
-    });
-});
-
-/* ==========================================
-   SCREEN 3: KEYWORD SELECTION
-   ========================================== */
-const containerVibes = document.getElementById("container-vibes");
-const containerMenu = document.getElementById("container-menu");
-const btnConfirmKeywords = document.getElementById("btn-confirm-keywords");
-const vibeCount = document.getElementById("vibe-count");
-const menuCount = document.getElementById("menu-count");
-
-function initializeKeywordsScreen() {
-    appState.selectedVibes = [];
-    appState.selectedMenu = [];
-    btnConfirmKeywords.disabled = true;
-
-    const currentKeywords = STAR_KEYWORDS[appState.selectedStars] || STAR_KEYWORDS[5];
-
-    containerVibes.innerHTML = "";
-    currentKeywords.vibes.forEach(keyword => {
-        const chip = document.createElement("button");
-        chip.className = "chip";
-        chip.textContent = keyword;
-        chip.addEventListener("click", () => toggleVibeKeyword(chip, keyword));
-        containerVibes.appendChild(chip);
-    });
-
-    containerMenu.innerHTML = "";
-    currentKeywords.menu.forEach(keyword => {
-        const chip = document.createElement("button");
-        chip.className = "chip chip-menu";
-        chip.textContent = keyword;
-        chip.addEventListener("click", () => toggleMenuKeyword(chip, keyword));
-        containerMenu.appendChild(chip);
-    });
-
-    vibeCount.textContent = "(0/2 Selected)";
-    menuCount.textContent = "(0/1 Selected)";
+function goBack() {
+    if (state.screenHistory.length === 0) return;
+    const prev = state.screenHistory.pop();
+    navigateTo(prev, false);
 }
 
-function toggleVibeKeyword(chipElement, keyword) {
-    const idx = appState.selectedVibes.indexOf(keyword);
+// ==========================================
+// SCREEN 1: STAR RATING
+// ==========================================
+const RATING_LABELS = {
+    1: "We're sorry to hear that 😔",
+    2: "We can do better 🤔",
+    3: "Thanks for the honest feedback 👍",
+    4: "Glad you had a good visit! 😊",
+    5: "That's amazing! 🌟"
+};
+
+function initStarRating() {
+    dom.starBtns.forEach(btn => {
+        const val = parseInt(btn.dataset.value);
+
+        btn.addEventListener('click', () => {
+            state.selectedStars = val;
+
+            // Update visual state
+            dom.starBtns.forEach((b, i) => {
+                b.classList.toggle('selected', i < val);
+                b.setAttribute('aria-checked', i < val ? 'true' : 'false');
+            });
+
+            // Feedback
+            dom.ratingFeedback.textContent = RATING_LABELS[val] || '';
+            dom.ratingFeedback.classList.add('highlight');
+
+            // Mini confetti for 5 stars
+            if (val === 5) {
+                spawnConfetti(30);
+            }
+
+            // Transition after delay
+            setTimeout(() => {
+                initKeywordsScreen();
+                navigateTo('keywords');
+            }, 800);
+        });
+
+        // Hover effect
+        btn.addEventListener('mouseenter', () => {
+            dom.starBtns.forEach((b, i) => {
+                b.classList.toggle('hover', i < val);
+            });
+        });
+        btn.addEventListener('mouseleave', () => {
+            dom.starBtns.forEach(b => b.classList.remove('hover'));
+        });
+    });
+}
+
+// ==========================================
+// SCREEN 2: KEYWORD SELECTION
+// ==========================================
+function initKeywordsScreen() {
+    state.selectedVibes = [];
+    state.selectedMenu = [];
+    dom.btnConfirmKeywords.disabled = true;
+
+    const keywords = STAR_KEYWORDS[state.selectedStars] || STAR_KEYWORDS[5];
+
+    // Render vibe chips
+    dom.containerVibes.innerHTML = '';
+    keywords.vibes.forEach(kw => {
+        const chip = document.createElement('button');
+        chip.className = 'chip';
+        chip.textContent = kw;
+        chip.addEventListener('click', () => toggleVibe(chip, kw));
+        dom.containerVibes.appendChild(chip);
+    });
+
+    // Render menu chips
+    dom.containerMenu.innerHTML = '';
+    keywords.menu.forEach(kw => {
+        const chip = document.createElement('button');
+        chip.className = 'chip';
+        chip.textContent = kw;
+        chip.addEventListener('click', () => toggleMenu(chip, kw));
+        dom.containerMenu.appendChild(chip);
+    });
+
+    updateCounters();
+}
+
+function toggleVibe(chip, keyword) {
+    const idx = state.selectedVibes.indexOf(keyword);
     if (idx > -1) {
-        appState.selectedVibes.splice(idx, 1);
-        chipElement.classList.remove("selected");
+        state.selectedVibes.splice(idx, 1);
+        chip.classList.remove('selected');
     } else {
-        if (appState.selectedVibes.length < 2) {
-            appState.selectedVibes.push(keyword);
-            chipElement.classList.add("selected");
-        } else {
-            showToast("Maximum of 2 Experience aspects allowed.");
+        if (state.selectedVibes.length >= 2) {
+            showToast('Max 2 experience aspects');
+            return;
         }
+        state.selectedVibes.push(keyword);
+        chip.classList.add('selected');
+        pulseElement(chip);
     }
-    vibeCount.textContent = `(${appState.selectedVibes.length}/2 Selected)`;
-    validateKeywordSelection();
+    updateCounters();
+    validateKeywords();
 }
 
-function toggleMenuKeyword(chipElement, keyword) {
-    const idx = appState.selectedMenu.indexOf(keyword);
+function toggleMenu(chip, keyword) {
+    const idx = state.selectedMenu.indexOf(keyword);
     if (idx > -1) {
-        appState.selectedMenu.splice(idx, 1);
-        chipElement.classList.remove("selected");
+        state.selectedMenu.splice(idx, 1);
+        chip.classList.remove('selected');
     } else {
-        if (appState.selectedMenu.length < 1) {
-            appState.selectedMenu.push(keyword);
-            chipElement.classList.add("selected");
-        } else {
-            const selectedChips = containerMenu.querySelectorAll(".chip.selected");
-            selectedChips.forEach(c => c.classList.remove("selected"));
-            appState.selectedMenu = [keyword];
-            chipElement.classList.add("selected");
-        }
+        // Deselect previous
+        dom.containerMenu.querySelectorAll('.chip.selected').forEach(c => c.classList.remove('selected'));
+        state.selectedMenu = [keyword];
+        chip.classList.add('selected');
+        pulseElement(chip);
     }
-    menuCount.textContent = `(${appState.selectedMenu.length}/1 Selected)`;
-    validateKeywordSelection();
+    updateCounters();
+    validateKeywords();
 }
 
-function validateKeywordSelection() {
-    if (appState.selectedVibes.length === 2 && appState.selectedMenu.length === 1) {
-        btnConfirmKeywords.disabled = false;
-    } else {
-        btnConfirmKeywords.disabled = true;
-    }
+function updateCounters() {
+    dom.vibeCount.textContent = `${state.selectedVibes.length}/2`;
+    dom.menuCount.textContent = `${state.selectedMenu.length}/1`;
 }
 
-btnConfirmKeywords.addEventListener("click", () => {
-    appState.selectedKeywords = [...appState.selectedVibes, ...appState.selectedMenu];
-    
-    const footers = [
-        "Your Smile Is A Lot For Us",
-        "Smile Responsibly",
-        "Compliments Ahead",
-        "Handle This Smile With Care"
-    ];
-    appState.selectedFooter = footers[Math.floor(Math.random() * footers.length)];
+function validateKeywords() {
+    dom.btnConfirmKeywords.disabled = !(state.selectedVibes.length === 2 && state.selectedMenu.length === 1);
+}
 
-    if (appState.selectedStars <= 3) {
-        appState.selectedCardTheme = "spa";
-        appState.selectedCardImage = "char_spa.webp";
-        const spaJokes = [
-            "I told my dentist I wanted a crown. He gave me one and said, 'Now you rule the waiting room!' 👑",
-            "Why did the tooth go to the spa? It was feeling a bit decayed and needed to brush off some stress! 🧖‍♂️",
-            "My dentist told me to relax. I said I am relaxed, I'm just grinding my teeth in my sleep to save time! 😴",
-            "What does a dentist do at a spa? Scaling back on stress! 🧘‍♂️"
-        ];
-        appState.selectedJoke = spaJokes[Math.floor(Math.random() * spaJokes.length)];
+// Confirm keywords
+dom.btnConfirmKeywords.addEventListener('click', () => {
+    state.selectedKeywords = [...state.selectedVibes, ...state.selectedMenu];
+    state.footer = FOOTERS[Math.floor(Math.random() * FOOTERS.length)];
+
+    // Assign card theme
+    if (state.selectedStars <= 3) {
+        state.cardTheme = 'spa';
+        state.cardImage = 'char_spa.webp';
+        state.joke = randomPick(JOKES.spa);
     } else {
-        const isVacation = Math.random() < 0.5;
-        if (isVacation) {
-            appState.selectedCardTheme = "vacation";
-            appState.selectedCardImage = "char_vacation.webp";
-            const vacationJokes = [
-                "Where do teeth go on vacation? To the beach, to get some fresh enamel and clean tide! 🏖️",
-                "Why did the tooth drive a convertible? To feel the wind in its crowns! 🏎️",
-                "Taking a vacation from plaque and tartar. Ultimate dental freedom! 🏝️",
-                "What is a tooth's favorite vacation destination? Fill-adelphia! ✈️"
-            ];
-            appState.selectedJoke = vacationJokes[Math.floor(Math.random() * vacationJokes.length)];
-        } else {
-            appState.selectedCardTheme = "camera";
-            appState.selectedCardImage = "char_camera.webp";
-            const cameraJokes = [
-                "Why did the tooth smile for the camera? Because it knew it was lookin' brilliant and bright! 📸",
-                "What did the camera say to the clean tooth? 'You make me feel so photogenic!' ✨",
-                "Keep smiling! It makes people wonder what you've been up to... or if you just got a dental cleaning! 😁",
-                "Say 'Cheese'? No, say 'Bright Smiles'! 🦷"
-            ];
-            appState.selectedJoke = cameraJokes[Math.floor(Math.random() * cameraJokes.length)];
-        }
+        state.cardTheme = Math.random() < 0.5 ? 'vacation' : 'camera';
+        state.cardImage = `char_${state.cardTheme}.webp`;
+        state.joke = randomPick(JOKES[state.cardTheme]);
     }
-    
-    initializeWriterScreen();
-    navigateTo("writer");
+
+    initWriterScreen();
+    navigateTo('writer');
 });
 
-/* ==========================================
-   SCREEN 4: REVIEW WRITER SCREEN
-   ========================================== */
-const targetChipsStatus = document.getElementById("target-chips-status");
-const reviewText = document.getElementById("review-text");
-const reviewCharCount = document.getElementById("review-char-count");
-const btnCopyReview = document.getElementById("btn-copy-review");
-const btnGotoGoogle = document.getElementById("btn-goto-google");
-const btnVerifyClaim = document.getElementById("btn-verify-claim");
+// ==========================================
+// SCREEN 3: REVIEW WRITER
+// ==========================================
+function initWriterScreen() {
+    dom.reviewText.value = '';
+    dom.reviewCharCount.textContent = '0 characters';
+    dom.reviewQuality.textContent = 'Keep writing...';
+    dom.reviewQuality.className = 'quality-indicator';
+    dom.btnCopyReview.disabled = true;
+    dom.copySubtext.textContent = 'Keywords missing';
+    dom.btnGotoGoogle.style.display = 'none';
+    dom.btnVerifyClaim.style.display = 'none';
 
-function initializeWriterScreen() {
-    // Clear review inputs
-    reviewText.value = "";
-    reviewCharCount.textContent = "0 characters";
-    btnCopyReview.disabled = true;
-    btnCopyReview.querySelector("small").textContent = "Keywords missing";
-
-    // Hide redirect & verify buttons
-    if (btnGotoGoogle) btnGotoGoogle.style.display = "none";
-    if (btnVerifyClaim) btnVerifyClaim.style.display = "none";
-
-    // Render keyword verification status chips
-    targetChipsStatus.innerHTML = "";
-    appState.selectedKeywords.forEach(keyword => {
-        const chip = document.createElement("span");
-        chip.className = "status-chip";
-        chip.textContent = keyword;
-        chip.id = `status-chip-${cleanId(keyword)}`;
-        targetChipsStatus.appendChild(chip);
+    // Render keyword tracker
+    dom.keywordTracker.innerHTML = '';
+    state.selectedKeywords.forEach(kw => {
+        const chip = document.createElement('span');
+        chip.className = 'tracker-chip';
+        chip.textContent = kw;
+        chip.dataset.keyword = kw.toLowerCase();
+        dom.keywordTracker.appendChild(chip);
     });
 }
 
-function cleanId(str) {
-    return str.toLowerCase().replace(/[^a-z0-9]/g, "-");
-}
+dom.reviewText.addEventListener('input', () => {
+    const text = dom.reviewText.value;
+    const len = text.length;
+    dom.reviewCharCount.textContent = `${len} character${len !== 1 ? 's' : ''}`;
 
-reviewText.addEventListener("input", () => {
-    const text = reviewText.value;
-    reviewCharCount.textContent = `${text.length} characters`;
-
-    let allUsed = true;
-
-    appState.selectedKeywords.forEach(keyword => {
-        const chip = document.getElementById(`status-chip-${cleanId(keyword)}`);
-        const isPresent = text.toLowerCase().includes(keyword.toLowerCase());
-        
-        if (chip) {
-            if (isPresent) {
-                chip.classList.add("active");
-            } else {
-                chip.classList.remove("active");
-                allUsed = false;
-            }
-        }
+    // Check keywords (word boundary matching)
+    let allFound = true;
+    state.selectedKeywords.forEach(kw => {
+        const chip = dom.keywordTracker.querySelector(`[data-keyword="${kw.toLowerCase()}"]`);
+        // Use word-boundary aware check
+        const regex = new RegExp(`\\b${escapeRegex(kw)}\\b`, 'i');
+        const found = regex.test(text);
+        if (chip) chip.classList.toggle('found', found);
+        if (!found) allFound = false;
     });
 
-    if (allUsed && text.trim().length > 10) {
-        btnCopyReview.disabled = false;
-        btnCopyReview.querySelector("small").textContent = "Ready to Copy!";
+    // Quality indicator
+    if (len < 20) {
+        dom.reviewQuality.textContent = 'Keep writing...';
+        dom.reviewQuality.className = 'quality-indicator';
+    } else if (len < 80) {
+        dom.reviewQuality.textContent = 'Good start!';
+        dom.reviewQuality.className = 'quality-indicator good';
+    } else if (len < 150) {
+        dom.reviewQuality.textContent = 'Looking great!';
+        dom.reviewQuality.className = 'quality-indicator good';
     } else {
-        btnCopyReview.disabled = true;
-        btnCopyReview.querySelector("small").textContent = text.trim().length <= 10 ? "Write a bit more..." : "Keywords missing";
+        dom.reviewQuality.textContent = 'Excellent detail! ⭐';
+        dom.reviewQuality.className = 'quality-indicator great';
+    }
+
+    // Enable/disable copy
+    if (allFound && len >= 20) {
+        dom.btnCopyReview.disabled = false;
+        dom.copySubtext.textContent = 'Ready to copy!';
+    } else {
+        dom.btnCopyReview.disabled = true;
+        dom.copySubtext.textContent = !allFound ? 'Keywords missing' : 'Write a bit more...';
     }
 });
 
-btnCopyReview.addEventListener("click", () => {
-    const textToCopy = reviewText.value;
-    navigator.clipboard.writeText(textToCopy).then(() => {
-        showToast("Review copied to clipboard!");
-        
-        // Make next steps visible
-        if (btnGotoGoogle) btnGotoGoogle.style.display = "block";
-        if (btnVerifyClaim) btnVerifyClaim.style.display = "block";
-    }).catch(err => {
-        console.error("Failed to copy:", err);
-        showToast("Error copying, copy manually.");
-    });
+// Copy review
+dom.btnCopyReview.addEventListener('click', async () => {
+    const text = dom.reviewText.value;
+    try {
+        await navigator.clipboard.writeText(text);
+    } catch {
+        // Fallback for HTTP
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+    }
+
+    state.isCopied = true;
+    showToast('Review copied! ✓');
+    spawnConfetti(20);
+
+    // Show next buttons
+    dom.btnGotoGoogle.style.display = 'flex';
+    dom.btnVerifyClaim.style.display = 'flex';
+    dom.btnCopyReview.style.display = 'none';
 });
 
-if (btnGotoGoogle) {
-    btnGotoGoogle.addEventListener("click", () => {
-        window.open("https://search.google.com/local/writereview?placeid=ChIJT4N1hQ-1j4ARgJ6S0h4FqC4", "_blank");
-    });
-}
+// Go to Google Reviews
+dom.btnGotoGoogle.addEventListener('click', () => {
+    window.open(`https://search.google.com/local/writereview?placeid=${CONFIG.googlePlaceId}`, '_blank');
+});
 
-if (btnVerifyClaim) {
-    btnVerifyClaim.addEventListener("click", () => {
-        navigateTo("scratch");
-        requestAnimationFrame(() => {
-            setupScratchCard();
-        });
-    });
-}
+// Claim reward
+dom.btnVerifyClaim.addEventListener('click', () => {
+    navigateTo('scratch');
+    requestAnimationFrame(() => setupScratchCard());
+});
 
-/* ==========================================
-   SCREEN 5: SCRATCH CARD CANVAS
-   ========================================== */
-const scratchContainer = document.getElementById("scratch-container");
-const scratchCanvas = document.getElementById("scratch-canvas");
-const btnGoToShare = document.getElementById("btn-go-to-share");
-
+// ==========================================
+// SCREEN 4: SCRATCH CARD
+// ==========================================
+let scratchCtx = null;
 let isDrawing = false;
-let ctx = null;
 
 function setupScratchCard() {
-    appState.isScratched = false;
-    btnGoToShare.style.display = "none";
-    
-    // Set revealed card background image and inject dynamic HTML joke content
-    const revealedCard = document.getElementById("scratch-reveal-card");
-    if (revealedCard) {
-        revealedCard.className = `scratch-reveal-card theme-${appState.selectedCardTheme}`;
-        revealedCard.style.backgroundImage = "none"; // Clear static bg image
-        revealedCard.innerHTML = `
-            <div class="dynamic-card-wrapper">
-                <div class="card-top-header">
-                    <span class="card-logo-emoji">🦷</span>
-                    <span class="card-logo-text">BRIGHT SMILES</span>
+    state.isScratched = false;
+    dom.btnGoToShare.style.display = 'none';
+
+    // Build reveal card
+    const revealCard = document.getElementById('scratch-reveal-card');
+    if (revealCard) {
+        revealCard.className = `scratch-reveal-card card-theme-${state.cardTheme}`;
+        revealCard.innerHTML = `
+            <div class="dynamic-card">
+                <div class="card-brand-row">
+                    <span>🦷</span>
+                    <span>BRIGHT SMILES</span>
                 </div>
-                <div class="card-character-container">
-                    <img class="card-character-image" src="${appState.selectedCardImage}" alt="Tooth Character">
+                <div class="card-character">
+                    <img src="${state.cardImage}" alt="Dental character">
                 </div>
-                <div class="card-joke-container">
-                    <p class="card-joke-text">"${appState.selectedJoke}"</p>
-                </div>
-                <div class="card-footer-branding">
-                    <span>${appState.selectedFooter} • BRIGHT SMILES</span>
-                </div>
+                <div class="card-joke">"${state.joke}"</div>
+                <div class="card-footer-row">${state.footer} • BRIGHT SMILES</div>
             </div>
         `;
     }
 
-    const width = scratchContainer.clientWidth || 310;
-    const height = scratchContainer.clientHeight || 550;
-    scratchCanvas.width = width;
-    scratchCanvas.height = height;
+    // Setup canvas
+    const container = dom.scratchContainer;
+    const canvas = dom.scratchCanvas;
+    const dpr = window.devicePixelRatio || 1;
+    const w = container.clientWidth;
+    const h = container.clientHeight;
 
-    ctx = scratchCanvas.getContext("2d");
-    
-    // Fill with a clinical blue grease gradient
-    let grad = ctx.createLinearGradient(0, 0, width, height);
-    grad.addColorStop(0, '#004bb9');
-    grad.addColorStop(0.5, '#3cb3ff');
-    grad.addColorStop(1, '#004bb9');
-    
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, width, height);
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
 
-    // Draw scratch text on grease layer
-    ctx.fillStyle = "#ffffff";
-    ctx.font = "bold 16px 'Fredoka'";
-    ctx.textAlign = "center";
-    ctx.fillText("SWIPE TO REVEAL", width / 2, height / 2 - 10);
-    ctx.fillStyle = "#b9defa";
-    ctx.font = "italic 12px 'Poppins'";
-    ctx.fillText("uncover your smile card...", width / 2, height / 2 + 15);
+    scratchCtx = canvas.getContext('2d');
+    scratchCtx.scale(dpr, dpr);
 
-    // Overlay warning border outlines on canvas
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.15)";
-    ctx.lineWidth = 14;
-    ctx.strokeRect(7, 7, width - 14, height - 14);
+    // Draw scratch overlay
+    const grad = scratchCtx.createLinearGradient(0, 0, w, h);
+    grad.addColorStop(0, '#1e3a5f');
+    grad.addColorStop(0.5, '#2563eb');
+    grad.addColorStop(1, '#1e3a5f');
+    scratchCtx.fillStyle = grad;
+    scratchCtx.fillRect(0, 0, w, h);
 
-    ctx.globalCompositeOperation = 'source-over';
+    // Text
+    scratchCtx.fillStyle = 'rgba(255,255,255,0.9)';
+    scratchCtx.font = `bold ${Math.max(14, w * 0.055)}px 'Space Grotesk', sans-serif`;
+    scratchCtx.textAlign = 'center';
+    scratchCtx.fillText('SCRATCH HERE', w / 2, h / 2 - 10);
+    scratchCtx.fillStyle = 'rgba(255,255,255,0.5)';
+    scratchCtx.font = `italic ${Math.max(11, w * 0.04)}px 'Inter', sans-serif`;
+    scratchCtx.fillText('reveal your reward card...', w / 2, h / 2 + 15);
 
-    scratchCanvas.addEventListener("mousedown", startScratch);
-    scratchCanvas.addEventListener("mousemove", scratch);
-    scratchCanvas.addEventListener("mouseup", stopScratch);
-    scratchCanvas.addEventListener("mouseleave", stopScratch);
+    // Border
+    scratchCtx.strokeStyle = 'rgba(255,255,255,0.1)';
+    scratchCtx.lineWidth = 12;
+    scratchCtx.strokeRect(6, 6, w - 12, h - 12);
 
-    scratchCanvas.addEventListener("touchstart", startScratch, { passive: false });
-    scratchCanvas.addEventListener("touchmove", scratch, { passive: false });
-    scratchCanvas.addEventListener("touchend", stopScratch);
+    // Events
+    canvas.addEventListener('mousedown', scratchStart);
+    canvas.addEventListener('mousemove', scratchMove);
+    canvas.addEventListener('mouseup', scratchEnd);
+    canvas.addEventListener('mouseleave', scratchEnd);
+    canvas.addEventListener('touchstart', scratchStart, { passive: false });
+    canvas.addEventListener('touchmove', scratchMove, { passive: false });
+    canvas.addEventListener('touchend', scratchEnd);
 }
 
-function startScratch(e) {
+function scratchStart(e) {
     isDrawing = true;
-    scratch(e);
+    scratchMove(e);
 }
 
-function scratch(e) {
+function scratchMove(e) {
     if (!isDrawing) return;
     e.preventDefault();
 
-    const rect = scratchCanvas.getBoundingClientRect();
+    const rect = dom.scratchCanvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
     let x, y;
 
     if (e.touches) {
-        x = e.touches[0].clientX - rect.left;
-        y = e.touches[0].clientY - rect.top;
+        x = (e.touches[0].clientX - rect.left);
+        y = (e.touches[0].clientY - rect.top);
     } else {
-        x = e.clientX - rect.left;
-        y = e.clientY - rect.top;
+        x = (e.clientX - rect.left);
+        y = (e.clientY - rect.top);
     }
 
-    ctx.globalCompositeOperation = 'destination-out';
-    ctx.beginPath();
-    ctx.arc(x, y, 42, 0, Math.PI * 2); // Increased brush size for faster scratching
-    ctx.fill();
+    scratchCtx.save();
+    scratchCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    scratchCtx.globalCompositeOperation = 'destination-out';
+    scratchCtx.beginPath();
+    scratchCtx.arc(x, y, 35, 0, Math.PI * 2);
+    scratchCtx.fill();
+    scratchCtx.restore();
 
     checkScratchProgress();
 }
 
-function stopScratch() {
+function scratchEnd() {
     isDrawing = false;
 }
 
 function checkScratchProgress() {
-    if (appState.isScratched) return;
+    if (state.isScratched) return;
 
-    const imgData = ctx.getImageData(0, 0, scratchCanvas.width, scratchCanvas.height);
+    const canvas = dom.scratchCanvas;
+    const ctx = scratchCtx;
+    const dpr = window.devicePixelRatio || 1;
+
+    // Sample pixels
+    const w = canvas.width;
+    const h = canvas.height;
+    const imgData = ctx.getImageData(0, 0, w, h);
     const pixels = imgData.data;
-    let transparentCount = 0;
+    let transparent = 0;
+    const total = pixels.length / 4;
 
     for (let i = 3; i < pixels.length; i += 4) {
-        if (pixels[i] === 0) {
-            transparentCount++;
-        }
+        if (pixels[i] === 0) transparent++;
     }
 
-    const percentage = (transparentCount / (pixels.length / 4)) * 100;
-    
-    // Lowered threshold to 22% so the full card reveals much sooner and effortlessly
-    if (percentage > 22) {
-        appState.isScratched = true;
-        
-        scratchCanvas.style.transition = "opacity 0.4s ease-out"; // Faster fade out
-        scratchCanvas.style.opacity = "0";
-        
+    const pct = (transparent / total) * 100;
+    if (pct > 20) {
+        state.isScratched = true;
+        canvas.style.transition = 'opacity 0.5s ease-out';
+        canvas.style.opacity = '0';
+        spawnConfetti(40);
         setTimeout(() => {
-            scratchCanvas.style.display = "none";
-            btnGoToShare.style.display = "block";
-        }, 600);
+            canvas.style.display = 'none';
+            dom.btnGoToShare.style.display = 'flex';
+        }, 500);
     }
 }
 
-btnGoToShare.addEventListener("click", () => {
-    initializeShareScreen();
-    navigateTo("share");
+dom.btnGoToShare.addEventListener('click', () => {
+    initShareScreen();
+    navigateTo('share');
 });
 
-/* ==========================================
-   SCREEN 6: SOCIAL SHARE LOGIC
-   ========================================== */
-const btnShareInstagram = document.getElementById("btn-share-instagram");
-const btnShareWhatsapp = document.getElementById("btn-share-whatsapp");
-const btnRestart = document.getElementById("btn-restart");
-
-function initializeShareScreen() {
-    const previewCard = document.getElementById("social-preview-card");
-    if (previewCard) {
-        previewCard.className = `social-preview-card theme-${appState.selectedCardTheme}`;
-        previewCard.style.backgroundImage = "none"; // Clear static bg image
-        previewCard.innerHTML = `
-            <div class="dynamic-card-wrapper">
-                <div class="card-top-header">
-                    <span class="card-logo-emoji">🦷</span>
-                    <span class="card-logo-text">BRIGHT SMILES</span>
+// ==========================================
+// SCREEN 5: SHARE
+// ==========================================
+function initShareScreen() {
+    const preview = document.getElementById('social-preview-card');
+    if (preview) {
+        preview.className = `share-preview card-theme-${state.cardTheme}`;
+        preview.innerHTML = `
+            <div class="dynamic-card">
+                <div class="card-brand-row">
+                    <span>🦷</span>
+                    <span>BRIGHT SMILES</span>
                 </div>
-                <div class="card-character-container">
-                    <img class="card-character-image" src="${appState.selectedCardImage}" alt="Tooth Character">
+                <div class="card-character">
+                    <img src="${state.cardImage}" alt="Dental character">
                 </div>
-                <div class="card-joke-container">
-                    <p class="card-joke-text">"${appState.selectedJoke}"</p>
-                </div>
-                <div class="card-footer-branding">
-                    <span>${appState.selectedFooter} • BRIGHT SMILES</span>
-                </div>
+                <div class="card-joke">"${state.joke}"</div>
+                <div class="card-footer-row">${state.footer} • BRIGHT SMILES</div>
             </div>
         `;
     }
 }
 
-btnShareInstagram.addEventListener("click", () => {
-    const shareText = `Check out my patient smile card from Bright Smiles Dental Clinic! 🦷✨`;
-    navigator.clipboard.writeText(shareText).then(() => {
-        showToast("Instagram text copied! Redirecting...");
-        setTimeout(() => {
-            window.open("https://instagram.com", "_blank");
-        }, 1200);
+dom.btnShareInstagram.addEventListener('click', async () => {
+    const text = `Check out my patient smile card from ${CONFIG.clinicName}! 🦷✨`;
+    try {
+        await navigator.clipboard.writeText(text);
+    } catch {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+    }
+    showToast('Text copied! Opening Instagram...');
+    setTimeout(() => window.open('https://instagram.com', '_blank'), 1000);
+});
+
+dom.btnShareWhatsapp.addEventListener('click', () => {
+    const text = `Check out my patient smile card from ${CONFIG.clinicName}! 🦷🪥`;
+    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
+});
+
+dom.btnRestart.addEventListener('click', () => {
+    // Reset state
+    Object.assign(state, {
+        selectedStars: 0, selectedVibes: [], selectedMenu: [],
+        selectedKeywords: [], cardTheme: '', cardImage: '',
+        joke: '', footer: '', isCopied: false, isScratched: false,
+        screenHistory: []
     });
+
+    // Reset UI
+    dom.starBtns.forEach(b => {
+        b.classList.remove('selected');
+        b.setAttribute('aria-checked', 'false');
+    });
+    dom.ratingFeedback.textContent = 'Tap a star to begin';
+    dom.ratingFeedback.classList.remove('highlight');
+    dom.reviewText.value = '';
+    dom.btnCopyReview.style.display = 'flex';
+
+    // Reset scratch canvas
+    const canvas = dom.scratchCanvas;
+    canvas.style.display = 'block';
+    canvas.style.opacity = '1';
+    canvas.style.transition = 'none';
+
+    navigateTo('stars', false);
 });
 
-btnShareWhatsapp.addEventListener("click", () => {
-    const shareText = `Check out my patient smile card from Bright Smiles Dental Clinic! 🦷🪥\n\nCurate your review at LoopReview!`;
-    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
-    window.open(whatsappUrl, "_blank");
-});
+// ==========================================
+// BACK BUTTON
+// ==========================================
+dom.backBtn.addEventListener('click', goBack);
 
-btnRestart.addEventListener("click", () => {
-    appState = {
-        selectedStars: 0,
-        selectedVibes: [],
-        selectedMenu: [],
-        selectedKeywords: [],
-        selectedCardTheme: "",
-        selectedCardImage: "",
-        selectedJoke: "",
-        selectedFooter: "",
-        isCopied: false,
-        isScratched: false
-    };
-
-    starBtns.forEach(btn => btn.classList.remove("selected"));
-    ratingLabel.textContent = "Select your rating...";
-
-    scratchCanvas.style.display = "block";
-    scratchCanvas.style.opacity = "1";
-    scratchCanvas.style.transition = "none";
-
-    navigateTo("stars");
-});
-
-/* ==========================================
-   TOAST HELPER
-   ========================================== */
-const toastElement = document.getElementById("app-toast");
-function showToast(message) {
-    toastElement.textContent = message;
-    toastElement.classList.add("show");
-    
-    setTimeout(() => {
-        toastElement.classList.remove("show");
-    }, 2500);
+// ==========================================
+// UTILITIES
+// ==========================================
+function randomPick(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
 }
+
+function escapeRegex(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function showToast(msg) {
+    dom.toast.textContent = msg;
+    dom.toast.classList.add('show');
+    clearTimeout(showToast._timer);
+    showToast._timer = setTimeout(() => dom.toast.classList.remove('show'), 2500);
+}
+
+function pulseElement(el) {
+    el.style.transform = 'scale(1.08)';
+    setTimeout(() => { el.style.transform = ''; }, 150);
+}
+
+// ==========================================
+// CONFETTI
+// ==========================================
+function spawnConfetti(count = 40) {
+    const canvas = dom.confettiCanvas;
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const pieces = [];
+    const colors = ['#3b82f6', '#60a5fa', '#f59e0b', '#fbbf24', '#10b981', '#f472b6', '#a78bfa'];
+
+    for (let i = 0; i < count; i++) {
+        pieces.push({
+            x: Math.random() * canvas.width,
+            y: -10 - Math.random() * 100,
+            w: 4 + Math.random() * 6,
+            h: 8 + Math.random() * 8,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            vx: (Math.random() - 0.5) * 4,
+            vy: 2 + Math.random() * 4,
+            rotation: Math.random() * 360,
+            rotSpeed: (Math.random() - 0.5) * 10,
+            opacity: 1
+        });
+    }
+
+    let frame = 0;
+    const maxFrames = 120;
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        pieces.forEach(p => {
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vy += 0.08;
+            p.rotation += p.rotSpeed;
+            p.opacity = Math.max(0, 1 - frame / maxFrames);
+
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate((p.rotation * Math.PI) / 180);
+            ctx.globalAlpha = p.opacity;
+            ctx.fillStyle = p.color;
+            ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+            ctx.restore();
+        });
+
+        frame++;
+        if (frame < maxFrames) {
+            requestAnimationFrame(draw);
+        } else {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+    }
+
+    requestAnimationFrame(draw);
+}
+
+// ==========================================
+// INIT
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    initStarRating();
+    navigateTo('stars', false);
+});

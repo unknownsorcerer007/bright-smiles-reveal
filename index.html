@@ -2,165 +2,225 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Bright Smiles - Dental Clinic</title>
-    <!-- Google Fonts: Fredoka for friendly rounded headings, Poppins for clean modern body text -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bright Smiles - Dental Clinic Review</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="preload" as="image" href="char_spa.webp">
-    <link rel="preload" as="image" href="char_vacation.webp">
-    <link rel="preload" as="image" href="char_camera.webp">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Main mobile app shell container -->
-    <div class="app-container">
-        <!-- Brand Header with Premium Brushed Gold Border -->
-        <header class="app-header">
-            <div class="gold-accent-line"></div>
-            <div class="header-content">
-                <span class="logo-emoji">🦷</span>
-                <h1 class="brand-title">BRIGHT SMILES</h1>
-                <span class="sub-badge">DENTAL CLINIC</span>
+    <!-- Ambient Background -->
+    <div class="ambient-bg">
+        <div class="ambient-orb orb-1"></div>
+        <div class="ambient-orb orb-2"></div>
+        <div class="ambient-orb orb-3"></div>
+    </div>
+
+    <!-- App Shell -->
+    <div class="app-shell">
+        <!-- Progress Bar -->
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-bar"></div>
+            <div class="progress-steps">
+                <div class="step-dot active" data-step="1"><span>1</span></div>
+                <div class="step-connector"></div>
+                <div class="step-dot" data-step="2"><span>2</span></div>
+                <div class="step-connector"></div>
+                <div class="step-dot" data-step="3"><span>3</span></div>
+                <div class="step-connector"></div>
+                <div class="step-dot" data-step="4"><span>4</span></div>
             </div>
+        </div>
+
+        <!-- Header -->
+        <header class="app-header">
+            <button class="back-btn" id="back-btn" aria-label="Go back">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
+            </button>
+            <div class="header-brand">
+                <div class="brand-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2C8.5 2 6 4.5 6 7c0 2 .5 3.5 1.5 5C9 14.5 10 17 10 20c0 1.1.9 2 2 2s2-.9 2-2c0-3 1-5.5 2.5-8 1-1.5 1.5-3 1.5-5 0-2.5-2.5-5-6-5z" fill="url(#toothGrad)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+                        <defs><linearGradient id="toothGrad" x1="6" y1="2" x2="18" y2="22"><stop stop-color="#60a5fa"/><stop offset="1" stop-color="#3b82f6"/></linearGradient></defs>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h1>BRIGHT SMILES</h1>
+                    <span>DENTAL CLINIC</span>
+                </div>
+            </div>
+            <div class="header-spacer"></div>
         </header>
 
-        <!-- Dynamic Screen Content Area -->
-        <main class="app-main">
+        <!-- Main Content -->
+        <main class="app-content" id="app-content">
             
-            <!-- SCREEN 1: Star Rating / Welcome -->
-            <section id="screen-stars" class="app-screen active">
-                <div class="welcome-card">
-                    <h2 class="section-title">A Sparkling Visit?</h2>
-                    <p class="section-desc">We hope your visit was comfortable and professional today. Please rate your clinical care experience with us.</p>
-                    
-                    <div class="star-rating-container">
-                        <button class="star-btn" data-value="1">★</button>
-                        <button class="star-btn" data-value="2">★</button>
-                        <button class="star-btn" data-value="3">★</button>
-                        <button class="star-btn" data-value="4">★</button>
-                        <button class="star-btn" data-value="5">★</button>
+            <!-- SCREEN 1: Star Rating -->
+            <section id="screen-stars" class="screen active">
+                <div class="screen-inner">
+                    <div class="hero-section">
+                        <div class="hero-glow"></div>
+                        <div class="hero-emoji">✨</div>
+                        <h2 class="hero-title">How was your visit?</h2>
+                        <p class="hero-subtitle">We'd love to hear about your experience. Your feedback helps us create brighter smiles.</p>
                     </div>
-                    <div class="rating-label">Select your rating...</div>
+
+                    <div class="stars-card">
+                        <div class="star-rating" id="star-rating" role="radiogroup" aria-label="Rate your visit">
+                            <button class="star-btn" data-value="1" role="radio" aria-checked="false" aria-label="1 star">
+                                <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </button>
+                            <button class="star-btn" data-value="2" role="radio" aria-checked="false" aria-label="2 stars">
+                                <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </button>
+                            <button class="star-btn" data-value="3" role="radio" aria-checked="false" aria-label="3 stars">
+                                <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </button>
+                            <button class="star-btn" data-value="4" role="radio" aria-checked="false" aria-label="4 stars">
+                                <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </button>
+                            <button class="star-btn" data-value="5" role="radio" aria-checked="false" aria-label="5 stars">
+                                <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </button>
+                        </div>
+                        <div class="rating-feedback" id="rating-feedback">Tap a star to begin</div>
+                    </div>
+
+                    <div class="info-pills">
+                        <div class="pill">🔒 Anonymous</div>
+                        <div class="pill">⏱️ 2 min</div>
+                        <div class="pill">🎁 Reward</div>
+                    </div>
                 </div>
             </section>
 
-            <!-- SCREEN 3: Keyword Selection -->
-            <section id="screen-keywords" class="app-screen">
-                <div class="card">
-                    <h2 class="section-title text-yellow">Curate Your Visit Details</h2>
-                    <p class="section-desc">Select exactly <strong>3 keywords</strong> that defined your visit. Choose <strong>2 Experience aspects</strong> and <strong>1 Dental treatment</strong>.</p>
-                    
-                    <!-- Standard Vibes Container -->
-                    <div class="category-block">
-                        <h3 class="category-title">1. Visit Experience <span class="counter" id="vibe-count">(0/2 Selected)</span></h3>
-                        <div class="chips-container" id="container-vibes">
-                            <!-- Injected by JS -->
+            <!-- SCREEN 2: Keywords -->
+            <section id="screen-keywords" class="screen">
+                <div class="screen-inner">
+                    <div class="screen-header">
+                        <h2>Pick what stood out</h2>
+                        <p>Choose <strong>2 experiences</strong> and <strong>1 treatment</strong> that defined your visit.</p>
+                    </div>
+
+                    <div class="keyword-section">
+                        <div class="section-label">
+                            <span class="label-icon">💬</span>
+                            <span>Visit Experience</span>
+                            <span class="label-counter" id="vibe-count">0/2</span>
+                        </div>
+                        <div class="chips-grid" id="container-vibes"></div>
+                    </div>
+
+                    <div class="keyword-section">
+                        <div class="section-label">
+                            <span class="label-icon">🦷</span>
+                            <span>Dental Treatment</span>
+                            <span class="label-counter" id="menu-count">0/1</span>
+                        </div>
+                        <div class="chips-grid" id="container-menu"></div>
+                    </div>
+
+                    <button id="btn-confirm-keywords" class="btn btn-primary" disabled>
+                        <span>Continue</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </button>
+                </div>
+            </section>
+
+            <!-- SCREEN 3: Review Writer -->
+            <section id="screen-writer" class="screen">
+                <div class="screen-inner">
+                    <div class="screen-header">
+                        <h2>Write your review</h2>
+                        <p>Use all <strong>3 keywords</strong> below naturally in your review to unlock your reward.</p>
+                    </div>
+
+                    <div class="keyword-tracker" id="keyword-tracker"></div>
+
+                    <div class="review-input-wrapper">
+                        <textarea id="review-text" class="review-textarea" placeholder="Tell us about your visit... What did you like? What could be better?"></textarea>
+                        <div class="review-meta">
+                            <span id="review-char-count">0 characters</span>
+                            <span id="review-quality" class="quality-indicator">Keep writing...</span>
                         </div>
                     </div>
 
-                    <!-- Menu Items Container -->
-                    <div class="category-block">
-                        <h3 class="category-title">2. Dental Treatment <span class="counter" id="menu-count">(0/1 Selected)</span></h3>
-                        <div class="chips-container" id="container-menu">
-                            <!-- Injected by JS -->
-                        </div>
-                    </div>
-
-                    <button id="btn-confirm-keywords" class="btn btn-yellow" disabled>LOCK IN SELECTIONS</button>
-                </div>
-            </section>
-
-            <!-- SCREEN 4: Mascot Flash Challenge & Review Writer -->
-            <section id="screen-writer" class="app-screen">
-                <div class="card writer-card">
-                    <!-- Dynamic Challenge Header Card -->
-                    <div class="challenge-header-card">
-                        <h3 class="challenge-title-gold">Write Your Feedback</h3>
-                        <p class="challenge-instruction">Integrate all 3 selected keywords into your review below to unlock your reward card!</p>
-                    </div>
-
-                    <!-- Target Keyword Chips Indicator -->
-                    <div class="target-chips-container" id="target-chips-status">
-                        <!-- Loaded dynamically, shows keyword verification status (green if used) -->
-                    </div>
-
-                    <!-- Review Textarea -->
-                    <div class="input-container">
-                        <textarea id="review-text" class="input-area" placeholder="Begin writing your review... All selected keywords must be included to unlock your reward."></textarea>
-                        <div class="char-count" id="review-char-count">0 characters</div>
-                    </div>
-
-                    <div class="writer-actions-column">
-                        <button id="btn-copy-review" class="btn btn-yellow" style="width: 100%;" disabled>
-                            <span>COPY REVIEW TEXT</span>
-                            <small class="btn-subtext">Keywords missing</small>
+                    <div class="writer-actions">
+                        <button id="btn-copy-review" class="btn btn-primary" disabled>
+                            <span>Copy Review</span>
+                            <small id="copy-subtext">Keywords missing</small>
                         </button>
-                        
-                        <button id="btn-goto-google" class="btn btn-outline-white" style="margin-top: 12px; display: none; width: 100%;">
-                            <span>GO TO GOOGLE REVIEWS 🚀</span>
+                        <button id="btn-goto-google" class="btn btn-accent" style="display: none;">
+                            <span>Post on Google Reviews</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                         </button>
-                        
-                        <button id="btn-verify-claim" class="btn btn-yellow" style="margin-top: 12px; display: none; width: 100%;">
-                            <span>VERIFY & CLAIM REWARD 🦷</span>
+                        <button id="btn-verify-claim" class="btn btn-reward" style="display: none;">
+                            <span>Claim Your Reward 🎁</span>
                         </button>
                     </div>
                 </div>
             </section>
 
-            <!-- SCREEN 5: Scratch Card Gamification -->
-            <section id="screen-scratch" class="app-screen">
-                <div class="scratch-card-wrapper">
-                    <h2 class="section-title text-yellow text-center">Reveal Your Smile Card</h2>
-                    <p class="section-desc text-center">Gently swipe away the clinical seal to reveal your custom dental humor card!</p>
-                    
+            <!-- SCREEN 4: Scratch Card -->
+            <section id="screen-scratch" class="screen">
+                <div class="screen-inner scratch-screen">
+                    <h2 class="scratch-title">Your Reward Card</h2>
+                    <p class="scratch-subtitle">Scratch to reveal your personalized dental humor card!</p>
+
                     <div class="scratch-container" id="scratch-container">
-                        <!-- Background card that is revealed -->
-                        <div class="scratch-reveal-card" id="scratch-reveal-card">
-                            <!-- Injected dynamically by JS -->
-                        </div>
-                        <!-- Canvas overlay for scratching -->
+                        <div class="scratch-reveal-card" id="scratch-reveal-card"></div>
                         <canvas id="scratch-canvas" class="scratch-canvas"></canvas>
                     </div>
 
-                    <button id="btn-go-to-share" class="btn btn-yellow" style="display: none; margin-top: 20px;">CLAIM & SHARE</button>
+                    <button id="btn-go-to-share" class="btn btn-accent" style="display: none;">
+                        <span>Share Your Card</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                    </button>
                 </div>
             </section>
 
-            <!-- SCREEN 6: Social Share Screen -->
-            <section id="screen-share" class="app-screen">
-                <div class="card share-card">
-                    <h2 class="section-title text-center text-yellow">Share Your Smile Card</h2>
-                    <p class="section-desc text-center">Showcase your customized patient smile card on Instagram or WhatsApp.</p>
-                    
-                    <!-- Share Preview Card -->
-                    <div class="social-preview-card" id="social-preview-card">
-                        <!-- Injected dynamically by JS -->
+            <!-- SCREEN 5: Share -->
+            <section id="screen-share" class="screen">
+                <div class="screen-inner">
+                    <div class="screen-header">
+                        <h2>Share your smile</h2>
+                        <p>Show off your reward card on social media!</p>
                     </div>
 
-                    <div class="share-actions-row">
-                        <button id="btn-share-instagram" class="btn btn-share btn-instagram">📸 SHARE ON INSTAGRAM</button>
-                        <button id="btn-share-whatsapp" class="btn btn-share btn-whatsapp">💬 SHARE ON WHATSAPP</button>
+                    <div class="share-preview" id="social-preview-card"></div>
+
+                    <div class="share-buttons">
+                        <button id="btn-share-instagram" class="btn btn-instagram">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                            <span>Share on Instagram</span>
+                        </button>
+                        <button id="btn-share-whatsapp" class="btn btn-whatsapp">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            <span>Share on WhatsApp</span>
+                        </button>
                     </div>
 
-                    <button id="btn-restart" class="btn btn-outline-white">START OVER</button>
+                    <button id="btn-restart" class="btn btn-ghost">Start Over</button>
                 </div>
             </section>
 
         </main>
-        
-        <!-- Global Footer Contact -->
-        <footer class="app-footer-contact">
-            Need help or have questions? Contact us at <br>
-            <a href="mailto:unknownsorcerer007@gmail.com" class="contact-email">unknownsorcerer007@gmail.com</a>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <span>Powered by <strong>Bright Smiles</strong></span>
+            <span class="footer-divider">•</span>
+            <a href="mailto:unknownsorcerer007@gmail.com">Contact</a>
         </footer>
 
-        <!-- App Toast Notification -->
-        <div class="app-toast" id="app-toast">Copied to clipboard!</div>
+        <!-- Toast -->
+        <div class="toast" id="app-toast"></div>
+
+        <!-- Canvas for confetti -->
+        <canvas id="confetti-canvas" class="confetti-canvas"></canvas>
     </div>
 
-    <!-- Script Import -->
     <script src="app.js"></script>
 </body>
 </html>
