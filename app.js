@@ -1,6 +1,6 @@
 /* ==========================================
    BRIGHT SMILES — PRODUCTION APP.JS
-   v3: Branding, frictionless UX, templates, haptics
+   v3: Branding, frictionless UX, haptics, QR code
    ========================================== */
 
 // ==========================================
@@ -39,7 +39,7 @@ const STAR_KEYWORDS = {
 };
 
 // ==========================================
-// JOKES, FOOTERS & TEMPLATES
+// JOKES & FOOTERS
 // ==========================================
 const JOKES = {
     spa: [
@@ -69,13 +69,7 @@ const FOOTERS = [
     "Handle This Smile With Care"
 ];
 
-const REVIEW_TEMPLATES = {
-    1: (v1, v2, t) => `I had a really disappointing visit. The main issues were ${v1.toLowerCase()} and ${v2.toLowerCase()}, which made the whole experience frustrating. On top of that, the ${t.toLowerCase()} was not what I expected at all. I hope the clinic takes this feedback seriously and improves.`,
-    2: (v1, v2, t) => `My visit was below average. I noticed ${v1.toLowerCase()} and ${v2.toLowerCase()}, which affected my overall experience. The ${t.toLowerCase()} could also use improvement. There's definitely room to do better.`,
-    3: (v1, v2, t) => `It was an okay visit overall. I'd describe the experience as ${v1.toLowerCase()} with ${v2.toLowerCase()}. The ${t.toLowerCase()} was acceptable but nothing stood out. Average visit, average expectations met.`,
-    4: (v1, v2, t) => `Really positive visit! The ${v1.toLowerCase()} and ${v2.toLowerCase()} made me feel well taken care of. The ${t.toLowerCase()} was smooth and professional. Would recommend to friends and family.`,
-    5: (v1, v2, t) => `Absolutely outstanding experience! From the ${v1.toLowerCase()} to the ${v2.toLowerCase()}, everything was exceptional. The ${t.toLowerCase()} was flawless. This clinic truly cares about their patients. Best dental visit I've ever had!`
-};
+
 
 // ==========================================
 // APP STATE
@@ -372,22 +366,7 @@ function initWriterScreen() {
         dom.keywordTracker.appendChild(chip);
     });
 
-    // Generate template suggestion
-    const templateFn = REVIEW_TEMPLATES[state.selectedStars];
-    const templateCard = document.getElementById('template-card');
-    const templateText = document.getElementById('template-text');
-    const btnUseTemplate = document.getElementById('btn-use-template');
-    if (templateFn && templateText && templateCard) {
-        const [v1, v2, t] = state.selectedKeywords;
-        templateText.textContent = `"${templateFn(v1, v2, t)}"`;
-        templateCard.style.display = 'block';
-        btnUseTemplate.onclick = () => {
-            dom.reviewText.value = templateFn(v1, v2, t);
-            dom.reviewText.dispatchEvent(new Event('input'));
-            templateCard.style.display = 'none';
-            haptic('light');
-        };
-    }
+    // Template removed per Google review policy (no pre-filled content)
 }
 
 dom.reviewText.addEventListener('input', () => {
@@ -454,9 +433,7 @@ dom.btnCopyReview.addEventListener('click', async () => {
     dom.btnVerifyClaim.style.display = 'flex';
     dom.btnCopyReview.style.display = 'none';
 
-    // Hide template card if still visible
-    const tc = document.getElementById('template-card');
-    if (tc) tc.style.display = 'none';
+
 });
 
 // Go to Google Reviews

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bright Smiles — QR Code for Printing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f4f8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Print styles */
+        @media print {
+            body { background: #fff; }
+            .no-print { display: none !important; }
+            .qr-card { box-shadow: none; border: 2px solid #e2e8f0; }
+        }
+
+        .no-print {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 12px;
+        }
+        .no-print button {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-print {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: #fff;
+        }
+        .btn-print:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
+        .btn-download {
+            background: #fff;
+            color: #1e293b;
+            border: 1px solid #e2e8f0 !important;
+        }
+        .btn-download:hover { border-color: #3b82f6 !important; }
+
+        /* QR Card - designed for printing */
+        .qr-card {
+            width: 380px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Top decorative bar */
+        .card-top-bar {
+            height: 6px;
+            background: linear-gradient(90deg, #2563eb 0%, #60a5fa 40%, #3b82f6 60%, #2563eb 100%);
+        }
+
+        /* Header section */
+        .card-header {
+            padding: 24px 24px 16px;
+            text-align: center;
+            position: relative;
+        }
+        .card-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 20%;
+            right: 20%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+        }
+
+        .tooth-icon {
+            font-size: 40px;
+            margin-bottom: 8px;
+            display: inline-block;
+            animation: gentleBounce 3s ease-in-out infinite;
+        }
+        @keyframes gentleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        .clinic-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: 2px;
+        }
+        .clinic-sub {
+            font-size: 10px;
+            font-weight: 600;
+            color: #3b82f6;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        /* QR Code section */
+        .qr-section {
+            padding: 24px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .qr-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        #qr-code {
+            width: 200px;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        #qr-code canvas, #qr-code img {
+            border-radius: 12px;
+        }
+
+        /* Cute tooth in center of QR */
+        .qr-center-tooth {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px;
+            height: 44px;
+            background: #fff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 2;
+        }
+
+        /* Cute corner decorations */
+        .corner-deco {
+            position: absolute;
+            font-size: 18px;
+            opacity: 0.15;
+        }
+        .corner-deco.tl { top: 8px; left: 12px; }
+        .corner-deco.tr { top: 8px; right: 12px; }
+        .corner-deco.bl { bottom: 8px; left: 12px; }
+        .corner-deco.br { bottom: 8px; right: 12px; }
+
+        /* CTA section */
+        .card-cta {
+            padding: 0 24px 20px;
+            text-align: center;
+        }
+        .cta-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+        .cta-sub {
+            font-size: 11px;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        /* Steps section */
+        .card-steps {
+            padding: 0 24px 20px;
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+        .step {
+            text-align: center;
+            flex: 1;
+        }
+        .step-num {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: #fff;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 6px;
+        }
+        .step-text {
+            font-size: 10px;
+            color: #64748b;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        /* Reward badge */
+        .reward-badge {
+            margin: 0 24px 20px;
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 1px solid #f59e0b;
+            border-radius: 10px;
+            padding: 10px 16px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .reward-badge span {
+            font-size: 18px;
+        }
+        .reward-text {
+            font-size: 12px;
+            font-weight: 600;
+            color: #92400e;
+        }
+
+        /* Footer */
+        .card-footer {
+            padding: 14px 24px;
+            text-align: center;
+            border-top: 1px solid #f1f5f9;
+            font-size: 9px;
+            color: #94a3b8;
+            letter-spacing: 0.5px;
+        }
+
+        /* Sparkle decorations */
+        .sparkle {
+            position: absolute;
+            font-size: 12px;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+        .sparkle:nth-child(1) { top: 20%; left: 8%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 40%; right: 6%; animation-delay: 0.7s; }
+        .sparkle:nth-child(3) { bottom: 30%; left: 5%; animation-delay: 1.4s; }
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.2); }
+        }
+
+        /* Small size option */
+        .qr-card.small { width: 280px; }
+        .qr-card.small #qr-code { width: 150px; height: 150px; }
+        .qr-card.small .qr-center-tooth { width: 36px; height: 36px; font-size: 18px; }
+        .qr-card.small .card-header { padding: 16px 16px 12px; }
+        .qr-card.small .qr-section { padding: 16px; }
+        .qr-card.small .clinic-name { font-size: 18px; }
+    </style>
+</head>
+<body>
+
+    <div class="no-print">
+        <button class="btn-print" onclick="window.print()">🖨️ Print QR Code</button>
+        <button class="btn-download" onclick="downloadCard()">📥 Download as Image</button>
+    </div>
+
+    <div class="qr-card" id="qr-card">
+        <div class="card-top-bar"></div>
+
+        <div class="card-header">
+            <div class="tooth-icon">🦷</div>
+            <div class="clinic-name">BRIGHT SMILES</div>
+            <div class="clinic-sub">DENTAL CLINIC</div>
+        </div>
+
+        <div class="qr-section">
+            <span class="corner-deco tl">✨</span>
+            <span class="corner-deco tr">✨</span>
+            <span class="corner-deco bl">✨</span>
+            <span class="corner-deco br">✨</span>
+
+            <div class="qr-wrapper">
+                <div id="qr-code"></div>
+                <div class="qr-center-tooth">🦷</div>
+            </div>
+        </div>
+
+        <div class="card-cta">
+            <div class="cta-text">Scan & Share Your Experience! 📱</div>
+            <div class="cta-sub">Your feedback helps us create brighter smiles.<br>Takes less than 2 minutes!</div>
+        </div>
+
+        <div class="card-steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-text">Scan<br>QR Code</div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-text">Rate Your<br>Visit</div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-text">Write a<br>Review</div>
+            </div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <div class="step-text">Get a Fun<br>Reward! 🎁</div>
+            </div>
+        </div>
+
+        <div class="reward-badge">
+            <span>🎁</span>
+            <div class="complete-review-and-receive-a-personalized-smile-card">
+                <div class="reward-text">Complete your review & receive a personalized smile card!</div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            Scan with your phone camera • No app needed • Anonymous & Secure
+        </div>
+    </div>
+
+    <!-- QR Code Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+    <script>
+        // Generate QR Code
+        const reviewUrl = 'https://unknownsorcerer007.github.io/bright-smiles-reveal/';
+
+        QRCode.toCanvas(document.createElement('canvas'), reviewUrl, {
+            width: 200,
+            margin: 0,
+            color: {
+                dark: '#0f172a',
+                light: '#ffffff'
+            },
+            errorCorrectionLevel: 'H' // High — allows center logo overlay
+        }, (err, canvas) => {
+            if (err) {
+                console.error(err);
+                return;
+            }
+            const container = document.getElementById('qr-code');
+            canvas.style.borderRadius = '12px';
+            container.appendChild(canvas);
+        });
+
+        // Download as image (using html2canvas fallback)
+        async function downloadCard() {
+            const card = document.getElementById('qr-card');
+            // Simple approach: use the browser's built-in functionality
+            // For production, use html2canvas library
+            try {
+                const { default: html2canvas } = await import('https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/+esm');
+                const canvas = await html2canvas(card, {
+                    backgroundColor: '#f0f4f8',
+                    scale: 2,
+                    borderRadius: 20
+                });
+                const link = document.createElement('a');
+                link.download = 'bright-smiles-qr-code.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            } catch (e) {
+                alert('For downloading, use the Print option (Ctrl+P) and save as PDF, or take a screenshot!');
+            }
+        }
+    </script>
+</body>
+</html>
